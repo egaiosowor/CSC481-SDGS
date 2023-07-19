@@ -5,12 +5,10 @@
     include('../includes/session.php');
     include('../includes/functions.php');
 
-    if(isset($_GET['matricNo']) && isset($_GET['levelId']) && isset($_GET['departmentId']) && isset($_GET['facultyId']) && isset($_GET['sessionId']) && isset($_GET['semesterId'])){
+    if(isset($_GET['matricNo']) && isset($_GET['yearId']) && isset($_GET['sessionId']) && isset($_GET['semesterId'])){
 
         $matricNo = $_GET['matricNo'];
-        $levelId = $_GET['levelId'];
-        $departmentId = $_GET['departmentId'];
-        $facultyId = $_GET['facultyId'];
+        $yearId = $_GET['yearId'];
         $sessionId = $_GET['sessionId'];
         $semesterId = $_GET['semesterId'];
 
@@ -24,7 +22,7 @@
         $sessionQuery=mysqli_query($con,"select * from tblsession where Id = '$sessionId'");                        
         $rowSession = mysqli_fetch_array($sessionQuery);
 
-        $levelQuery=mysqli_query($con,"select * from tbllevel where Id = '$levelId'");                        
+        $levelQuery=mysqli_query($con,"select * from tblyear where Id = '$yearId'");                        
         $rowLevel = mysqli_fetch_array($levelQuery);
 
     
@@ -70,13 +68,13 @@ if (isset($_POST['compute'])){
      
     
             //Checks if result has been computed (MatricNo, level, semester and session)
-            $que=mysqli_query($con,"select * from tblfinalresult where matricNo ='$matricNo' and levelId = '$levelId' and semesterId = '$semesterId' and sessionId = '$sessionId'");
+            $que=mysqli_query($con,"select * from tblfinalresult where matricNo ='$matricNo' and yearId = '$yearId' and semesterId = '$semesterId' and sessionId = '$sessionId'");
             $ret=mysqli_fetch_array($que); 
 
             if($ret == 0){  //if no record exists, insert a record
 
-                $query=mysqli_query($con,"insert into tblresult(matricNo,levelId,semesterId,sessionId,courseCode,courseUnit,score,scoreGradePoint,scoreLetterGrade,totalScoreGradePoint,dateAdded) 
-                value('$matricNo','$levelId','$semesterId','$sessionId','$courseCode[$i]','$courseUnit[$i]','$score[$i]','$gradePoint','$letterGrade','$scoreGradePoint','$dateAdded')");
+                $query=mysqli_query($con,"insert into tblresult(matricNo,yearId,semesterId,sessionId,courseCode,courseUnit,score,scoreGradePoint,scoreLetterGrade,totalScoreGradePoint,dateAdded) 
+                value('$matricNo','$yearId','$semesterId','$sessionId','$courseCode[$i]','$courseUnit[$i]','$score[$i]','$gradePoint','$letterGrade','$scoreGradePoint','$dateAdded')");
 
                 if ($query) {
 
@@ -102,7 +100,7 @@ if (isset($_POST['compute'])){
 
 
            //Checks if result has been computed (MatricNo, level, semester and session)
-            $que=mysqli_query($con,"select * from tblfinalresult where matricNo ='$matricNo' and levelId = '$levelId' and semesterId = '$semesterId' and sessionId = '$sessionId'");
+            $que=mysqli_query($con,"select * from tblfinalresult where matricNo ='$matricNo' and yearId = '$yearId' and semesterId = '$semesterId' and sessionId = '$sessionId'");
             $ret=mysqli_fetch_array($que);
 
             if($ret > 0){
@@ -112,8 +110,8 @@ if (isset($_POST['compute'])){
             }
             else{
 
-                $querys = mysqli_query($con,"insert into tblfinalresult(matricNo,levelId,semesterId,sessionId,totalCourseUnit,totalScoreGradePoint,gpa,classOfDiploma,dateAdded) 
-                value('$matricNo','$levelId','$semesterId','$sessionId','$totalCourseUnit','$totalScoreGradePoint','$gpa','$classOfDiploma','$dateAdded')");
+                $querys = mysqli_query($con,"insert into tblfinalresult(matricNo,yearId,semesterId,sessionId,totalCourseUnit,totalScoreGradePoint,gpa,classOfDiploma,dateAdded) 
+                value('$matricNo','$yearId','$semesterId','$sessionId','$totalCourseUnit','$totalScoreGradePoint','$gpa','$classOfDiploma','$dateAdded')");
 
                 if ($querys) {
 
@@ -212,7 +210,7 @@ function myFunction() {
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title"><h4 align="center">Compute <?php echo  $rowStd['firstName'].' '.$rowStd['lastName']?>'s&nbsp;<?php echo $rowLevel['levelName'];?>&nbsp;[<?php echo $rowSemester['semesterName'];?>] - Semester Result</h></strong>
+                                <strong class="card-title"><h4 align="center">Compute <?php echo  $rowStd['firstName'].' '.$rowStd['lastName']?>'s&nbsp;<?php echo $rowLevel['yearName'];?>&nbsp;[<?php echo $rowSemester['semesterName'];?>] - Semester Result</h></strong>
                             </div>
                             <form method="post">
                             <div class="card-body">
@@ -232,13 +230,13 @@ function myFunction() {
                                       
                             <?php
                 $ret=mysqli_query($con,"SELECT tblcourse.courseCode,tblcourse.courseTitle,tblcourse.dateAdded,tblcourse.Id,
-                tblcourse.courseUnit,tbllevel.levelName,tblfaculty.facultyName,tbldepartment.departmentName,tblsemester.semesterName
+                tblcourse.courseUnit,tblyear.yearName,tblfaculty.facultyName,tbldepartment.departmentName,tblsemester.semesterName
                 from tblcourse 
-                INNER JOIN tbllevel ON tbllevel.Id = tblcourse.levelId
+                INNER JOIN tblyear ON tblyear.Id = tblcourse.yearId
                 INNER JOIN tblsemester ON tblsemester.Id = tblcourse.semesterId
                 INNER JOIN tblfaculty ON tblfaculty.Id = tblcourse.facultyId
                 INNER JOIN tbldepartment ON tbldepartment.Id = tblcourse.departmentId
-                where tblcourse.levelId ='$levelId' and tblcourse.semesterId ='$semesterId' 
+                where tblcourse.yearId ='$yearId' and tblcourse.semesterId ='$semesterId' 
                 and tblcourse.departmentId ='$departmentId' and tblcourse.facultyId ='$facultyId'");
 
                 $cnt=1;

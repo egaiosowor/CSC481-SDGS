@@ -4,7 +4,7 @@
     $query = mysqli_query($con,"SELECT * FROM tblstudent WHERE matricNo='$matricNo'");
     $row = mysqli_fetch_array($query);
     $fullName = $row['firstName'].' '.$row['lastName'];
-    $levelId = $row['levelId'];
+    $yearId = $row['yearId'];
 
 ?>
 <aside id="left-panel" class="left-panel">

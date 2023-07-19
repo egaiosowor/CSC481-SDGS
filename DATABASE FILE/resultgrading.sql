@@ -125,9 +125,7 @@ CREATE TABLE `tblcourse` (
   `courseTitle` varchar(255) NOT NULL,
   `courseCode` varchar(255) NOT NULL,
   `courseUnit` int(10) NOT NULL,
-  `facultyId` varchar(255) NOT NULL,
-  `departmentId` varchar(255) NOT NULL,
-  `levelId` varchar(10) NOT NULL,
+  `yearId` varchar(10) NOT NULL,
   `semesterId` varchar(20) NOT NULL,
   `dateAdded` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -136,7 +134,7 @@ CREATE TABLE `tblcourse` (
 -- Dumping data for table `tblcourse`
 --
 
-INSERT INTO `tblcourse` (`Id`, `courseTitle`, `courseCode`, `courseUnit`, `facultyId`, `departmentId`, `levelId`, `semesterId`, `dateAdded`) VALUES
+INSERT INTO `tblcourse` (`Id`, `courseTitle`, `courseCode`, `courseUnit`, `facultyId`, `departmentId`, `yearId`, `semesterId`, `dateAdded`) VALUES
 (1, 'Programming Intro', 'PI01', 5, '1', '1', '1', '1', '2022-06-13'),
 (2, 'Networking', 'NT100', 5, '1', '1', '1', '2', '2022-06-13'),
 (3, 'Law of Contract', 'LC1', 6, '3', '3', '1', '1', '2022-06-15'),
@@ -210,7 +208,7 @@ INSERT INTO `tblfaculty` (`Id`, `facultyName`, `dateCreated`) VALUES
 CREATE TABLE `tblfinalresult` (
   `Id` int(10) NOT NULL,
   `matricNo` varchar(50) NOT NULL,
-  `levelId` varchar(10) NOT NULL,
+  `yearId` varchar(10) NOT NULL,
   `semesterId` varchar(10) NOT NULL,
   `sessionId` varchar(10) NOT NULL,
   `totalCourseUnit` varchar(10) NOT NULL,
@@ -224,7 +222,7 @@ CREATE TABLE `tblfinalresult` (
 -- Dumping data for table `tblfinalresult`
 --
 
-INSERT INTO `tblfinalresult` (`Id`, `matricNo`, `levelId`, `semesterId`, `sessionId`, `totalCourseUnit`, `totalScoreGradePoint`, `gpa`, `classOfDiploma`, `dateAdded`) VALUES
+INSERT INTO `tblfinalresult` (`Id`, `matricNo`, `yearId`, `semesterId`, `sessionId`, `totalCourseUnit`, `totalScoreGradePoint`, `gpa`, `classOfDiploma`, `dateAdded`) VALUES
 (1, 'SGS100', '1', '1', '1', '5', '0', '0', 'Fail', '2022-06-13'),
 (2, 'SGS100', '1', '2', '1', '5', '13.75', '2.75', 'Lower Credit', '2022-06-13'),
 (3, '10101', '1', '1', '1', '5', '17.5', '3.5', 'Distinction', '2022-06-15'),
@@ -237,19 +235,19 @@ INSERT INTO `tblfinalresult` (`Id`, `matricNo`, `levelId`, `semesterId`, `sessio
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbllevel`
+-- Table structure for table `tblyear`
 --
 
-CREATE TABLE `tbllevel` (
+CREATE TABLE `tblyear` (
   `Id` int(20) NOT NULL,
-  `levelName` varchar(255) NOT NULL
+  `yearName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbllevel`
+-- Dumping data for table `tblyear`
 --
 
-INSERT INTO `tbllevel` (`Id`, `levelName`) VALUES
+INSERT INTO `tblyear` (`Id`, `yearName`) VALUES
 (1, 'Level One'),
 (2, 'Level Two');
 
@@ -262,7 +260,7 @@ INSERT INTO `tbllevel` (`Id`, `levelName`) VALUES
 CREATE TABLE `tblresult` (
   `Id` int(10) NOT NULL,
   `matricNo` varchar(50) NOT NULL,
-  `levelId` varchar(10) NOT NULL,
+  `yearId` varchar(10) NOT NULL,
   `semesterId` varchar(10) NOT NULL,
   `sessionId` varchar(10) NOT NULL,
   `courseCode` varchar(50) NOT NULL,
@@ -278,7 +276,7 @@ CREATE TABLE `tblresult` (
 -- Dumping data for table `tblresult`
 --
 
-INSERT INTO `tblresult` (`Id`, `matricNo`, `levelId`, `semesterId`, `sessionId`, `courseCode`, `courseUnit`, `score`, `scoreGradePoint`, `scoreLetterGrade`, `totalScoreGradePoint`, `dateAdded`) VALUES
+INSERT INTO `tblresult` (`Id`, `matricNo`, `yearId`, `semesterId`, `sessionId`, `courseCode`, `courseUnit`, `score`, `scoreGradePoint`, `scoreLetterGrade`, `totalScoreGradePoint`, `dateAdded`) VALUES
 (1, 'SGS100', '1', '1', '1', 'PI01', '5', '30', '0', 'F', '0', '2022-06-13'),
 (2, 'SGS100', '1', '2', '1', 'NT100', '5', '55', '2.75', 'BC', '13.75', '2022-06-13'),
 (3, '10101', '1', '1', '1', 'PI01', '5', '72', '3.5', 'A', '17.5', '2022-06-15'),
@@ -380,7 +378,7 @@ CREATE TABLE `tblstudent` (
   `otherName` varchar(255) NOT NULL,
   `matricNo` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `levelId` int(10) NOT NULL,
+  `yearId` int(10) NOT NULL,
   `facultyId` int(10) NOT NULL,
   `departmentId` int(10) NOT NULL,
   `sessionId` int(10) NOT NULL,
@@ -391,7 +389,7 @@ CREATE TABLE `tblstudent` (
 -- Dumping data for table `tblstudent`
 --
 
-INSERT INTO `tblstudent` (`Id`, `firstName`, `lastName`, `otherName`, `matricNo`, `password`, `levelId`, `facultyId`, `departmentId`, `sessionId`, `dateCreated`) VALUES
+INSERT INTO `tblstudent` (`Id`, `firstName`, `lastName`, `otherName`, `matricNo`, `password`, `yearId`, `facultyId`, `departmentId`, `sessionId`, `dateCreated`) VALUES
 (17, 'Craig', 'Rodriguez', 'cr', 'SGS100', 'codeastro', 1, 1, 1, 1, '2022-06-13'),
 (18, 'Edith', 'Beck', 'el', '10101', 'codeastro', 1, 1, 1, 1, '2022-06-15'),
 (19, 'Chasity', 'Wilson', 'cw', '14750', 'codeastro', 1, 3, 3, 1, '2022-06-15'),
@@ -459,9 +457,9 @@ ALTER TABLE `tblfinalresult`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indexes for table `tbllevel`
+-- Indexes for table `tblyear`
 --
-ALTER TABLE `tbllevel`
+ALTER TABLE `tblyear`
   ADD PRIMARY KEY (`Id`);
 
 --
@@ -539,9 +537,9 @@ ALTER TABLE `tblfaculty`
 ALTER TABLE `tblfinalresult`
   MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT for table `tbllevel`
+-- AUTO_INCREMENT for table `tblyear`
 --
-ALTER TABLE `tbllevel`
+ALTER TABLE `tblyear`
   MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tblresult`

@@ -96,7 +96,7 @@
                                             <th>#</th>
                                             <th>FullName</th>
                                             <th>MatricNo</th>
-                                            <th>Level</th>
+                                            <th>Year</th>
                                             <th>Session</th>
                                             <th>Date Added</th>
                                             <th>Actions</th>
@@ -106,11 +106,10 @@
                                       
                             <?php
                     $ret=mysqli_query($con,"SELECT tblstudent.Id, tblstudent.firstName, tblstudent.lastName, tblstudent.otherName,tblstudent.matricNo,
-                    tblstudent.dateCreated, tbllevel.levelName,tblsession.sessionName
+                    tblstudent.dateCreated, tblyear.yearName,tblsession.sessionName
                     from tblstudent
-                    INNER JOIN tbllevel ON tbllevel.Id = tblstudent.levelId
-                    INNER JOIN tblsession ON tblsession.Id = tblstudent.sessionId
-                    INNER JOIN tblfaculty ON tblfaculty.Id = tblstudent.facultyId");
+                    INNER JOIN tblyear ON tblyear.Id = tblstudent.yearId
+                    INNER JOIN tblsession ON tblsession.Id = tblstudent.sessionId");
                     $cnt=1;
                     while ($row=mysqli_fetch_array($ret)) {
                                         ?>
@@ -118,7 +117,7 @@
                     <td><?php echo $cnt;?></td>
                     <td><?php  echo $row['firstName'].' '.$row['lastName'].' '.$row['otherName'];?></td>
                     <td><?php  echo $row['matricNo'];?></td>
-                    <td><?php  echo $row['levelName'];?></td>
+                    <td><?php  echo $row['yearName'];?></td>
                      <td><?php  echo $row['sessionName'];?></td>
                     <td><?php  echo $row['dateCreated'];?></td>
                     <td><a href="editStudent.php?editStudentId=<?php echo $row['matricNo'];?>" title="Edit Details"><i class="fa fa-edit fa-1x"></i></a>

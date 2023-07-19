@@ -14,12 +14,10 @@ if(isset($_POST['submit'])){
   $lastname=$_POST['lastname'];
   $othername=$_POST['othername'];
   $matricNo=$_POST['matricNo'];
-  $levelId=$_POST['levelId'];
+  $yearId=$_POST['yearId'];
     $sessionId=$_POST['sessionId'];
 
 
-$departmentId=$_POST['departmentId'];
-$facultyId=$_POST['facultyId'];
   $dateCreated = date("Y-m-d");
 
     $query=mysqli_query($con,"select * from tblstudent where matricno ='$matricNo'");
@@ -32,7 +30,7 @@ $facultyId=$_POST['facultyId'];
     }
     else{
 
-    $query=mysqli_query($con,"insert into tblstudent(firstName,lastName,otherName,matricNo,password,levelId,facultyId,departmentId,sessionId,dateCreated) value('$firstname','$lastname','$othername','$matricNo','codeastro','$levelId','$facultyId','$departmentId','$sessionId','$dateCreated')");
+    $query=mysqli_query($con,"insert into tblstudent(firstName,lastName,otherName,matricNo,password,yearId,sessionId,dateCreated) value('$firstname','$lastname','$othername','$matricNo','codeastro','$yearId','$sessionId','$dateCreated')");
 
     if ($query) {
 
@@ -182,13 +180,13 @@ function showValues(str) {
                                                 <div class="form-group">
                                                     <label for="x_card_code" class="control-label mb-1">Level</label>
                                                     <?php 
-                                                $query=mysqli_query($con,"select * from tbllevel");                        
+                                                $query=mysqli_query($con,"select * from tblyear");                        
                                                 $count = mysqli_num_rows($query);
                                                 if($count > 0){                       
-                                                    echo ' <select required name="levelId" class="custom-select form-control">';
+                                                    echo ' <select required name="yearId" class="custom-select form-control">';
                                                     echo'<option value="">--Select Level--</option>';
                                                     while ($row = mysqli_fetch_array($query)) {
-                                                    echo'<option value="'.$row['Id'].'" >'.$row['levelName'].'</option>';
+                                                    echo'<option value="'.$row['Id'].'" >'.$row['yearName'].'</option>';
                                                         }
                                                             echo '</select>';
                                                         }
@@ -222,7 +220,7 @@ function showValues(str) {
                                                 </div>
                                             </div>
                                         </div>
-                                               
+                                         
 											 <!-- Log on to codeastro.com for more projects! -->
                                              <p><small><i>Note: By default student's password is set to "<b>codeastro</b>"</i></small></p>
                                                 <button type="submit" name="submit" class="btn btn-success">Add New Student</button>
@@ -249,7 +247,9 @@ function showValues(str) {
 											<!-- Log on to codeastro.com for more projects! -->
                                             <th>FullName</th>
                                             <th>MatricNo</th>
-                                            <th>Level</th>
+                                            <th>Year</th>
+                                            <th>Faculty</th>
+                                            <th>Department</th>
                                             <th>Session</th>
                                             <th>Date</th>
                                             <th>Actions</th>
@@ -259,10 +259,12 @@ function showValues(str) {
                                       
                             <?php
                     $ret=mysqli_query($con,"SELECT tblstudent.Id, tblstudent.firstName, tblstudent.lastName, tblstudent.otherName,tblstudent.matricNo,
-                    tblstudent.dateCreated, tbllevel.levelName,tblsession.sessionName
+                    tblstudent.dateCreated, tblyear.yearName,tblfaculty.facultyName,tbldepartment.departmentName,tblsession.sessionName
                     from tblstudent
-                    INNER JOIN tbllevel ON tbllevel.Id = tblstudent.levelId
-                    INNER JOIN tblsession ON tblsession.Id = tblstudent.sessionId");
+                    INNER JOIN tblyear ON tblyear.Id = tblstudent.yearId
+                    INNER JOIN tblsession ON tblsession.Id = tblstudent.sessionId
+                    INNER JOIN tblfaculty ON tblfaculty.Id = tblstudent.facultyId
+                    INNER JOIN tbldepartment ON tbldepartment.Id = tblstudent.departmentId");
                     $cnt=1;
                     while ($row=mysqli_fetch_array($ret)) {
                                         ?>
@@ -270,7 +272,9 @@ function showValues(str) {
                     <td><?php echo $cnt;?></td>
                     <td><?php  echo $row['firstName'].' '.$row['lastName'].' '.$row['otherName'];?></td>
                     <td><?php  echo $row['matricNo'];?></td>
-                    <td><?php  echo $row['levelName'];?></td>
+                    <td><?php  echo $row['yearName'];?></td>
+                    <td><?php  echo $row['facultyName'];?></td>
+                    <td><?php  echo $row['departmentName'];?></td>
                      <td><?php  echo $row['sessionName'];?></td>
                     <td><?php  echo $row['dateCreated'];?></td>
 					<!-- Log on to codeastro.com for more projects! -->

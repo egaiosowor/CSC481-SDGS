@@ -4,7 +4,7 @@
 
     $deptId = intval($_GET['deptId']);//gradeId
 
-        $queryss=mysqli_query($con,"select * from tblcourse where departmentId=".$deptId." ORDER BY courseTitle ASC");                        
+        $queryss=mysqli_query($con,"select * from tblcourse ORDER BY courseTitle ASC");                        
         $countt = mysqli_num_rows($queryss);
 
         if($countt > 0){                       

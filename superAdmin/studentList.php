@@ -119,13 +119,13 @@ function showValues(str) {
                                                     <div class="form-group">
                                                       <label for="x_card_code" class="control-label mb-1">Level</label>
                                                     <?php 
-                                                $query=mysqli_query($con,"select * from tbllevel");                        
+                                                $query=mysqli_query($con,"select * from tblyear");                        
                                                 $count = mysqli_num_rows($query);
                                                 if($count > 0){                       
-                                                    echo ' <select required name="levelId" class="custom-select form-control">';
+                                                    echo ' <select required name="yearId" class="custom-select form-control">';
                                                     echo'<option value="">--Select Level--</option>';
                                                     while ($row = mysqli_fetch_array($query)) {
-                                                    echo'<option value="'.$row['Id'].'" >'.$row['levelName'].'</option>';
+                                                    echo'<option value="'.$row['Id'].'" >'.$row['yearName'].'</option>';
                                                         }
                                                             echo '</select>';
                                                         }
@@ -177,7 +177,7 @@ function showValues(str) {
                                             <th>#</th>
                                             <th>FullName</th>
                                             <th>MatricNo</th>
-                                            <th>Level</th>
+                                            <th>Year</th>
                                             <th>Session</th>
                                             <th>Date Added</th>
                                             <th>First Semester</th>
@@ -190,18 +190,16 @@ function showValues(str) {
                 if(isset($_POST['submit']))
                 {
 
-                    $levelId=$_POST['levelId'];
+                    $yearId=$_POST['yearId'];
                     $sessionId=$_POST['sessionId'];
-                    $departmentId=$_POST['departmentId'];
-                    $facultyId=$_POST['facultyId'];
 
                     $ret=mysqli_query($con,"SELECT tblstudent.Id, tblstudent.firstName, tblstudent.lastName, tblstudent.otherName,tblstudent.matricNo,
-                    tblstudent.dateCreated, tbllevel.levelName,tblsession.sessionName,
-                    tblstudent.levelId,tblstudent.sessionId,
+                    tblstudent.dateCreated, tblyear.yearName,tblsession.sessionName,
+                    tblstudent.yearId,tblstudent.sessionId,
                     from tblstudent
-                    INNER JOIN tbllevel ON tbllevel.Id = tblstudent.levelId
+                    INNER JOIN tblyear ON tblyear.Id = tblstudent.yearId
                     INNER JOIN tblsession ON tblsession.Id = tblstudent.sessionId
-                    where tblstudent.levelId ='$levelId' and tblstudent.sessionId ='$sessionId'");
+                    where tblstudent.yearId ='$yearId' and tblstudent.sessionId ='$sessionId'");
                     $cnt=1;
                     while ($row=mysqli_fetch_array($ret)) {
                                         ?>
@@ -209,11 +207,11 @@ function showValues(str) {
                     <td><?php echo $cnt;?></td>
                     <td><?php  echo $row['firstName'].' '.$row['lastName'].' '.$row['otherName'];?></td>
                     <td><?php  echo $row['matricNo'];?></td>
-                    <td><?php  echo $row['levelName'];?></td>
+                    <td><?php  echo $row['yearName'];?></td>
                      <td><?php  echo $row['sessionName'];?></td>
                     <td><?php  echo $row['dateCreated'];?></td>
-                    <td><a href="courseList.php?semesterId=1&matricNo=<?php echo $row['matricNo'];?>&levelId=<?php echo $row['levelId'];?>&sessionId=<?php echo $row['sessionId'];?>" title="Edit Details"><i class="fa fa-eye fa-1x"></i> View Course</a></td>
-                    <td><a href="courseList.php?semesterId=2&matricNo=<?php echo $row['matricNo'];?>&levelId=<?php echo $row['levelId'];?>&sessionId=<?php echo $row['sessionId'];?>" title="Edit Details"><i class="fa fa-eye fa-1x"></i> View Course</a></td>
+                    <td><a href="courseList.php?semesterId=1&matricNo=<?php echo $row['matricNo'];?>&yearId=<?php echo $row['yearId'];?>&sessionId=<?php echo $row['sessionId'];?>" title="Edit Details"><i class="fa fa-eye fa-1x"></i> View Course</a></td>
+                    <td><a href="courseList.php?semesterId=2&matricNo=<?php echo $row['matricNo'];?>&yearId=<?php echo $row['yearId'];?>&sessionId=<?php echo $row['sessionId'];?>" title="Edit Details"><i class="fa fa-eye fa-1x"></i> View Course</a></td>
                     </tr>
                     <?php 
                     $cnt=$cnt+1;

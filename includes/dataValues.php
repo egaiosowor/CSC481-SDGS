@@ -4,30 +4,12 @@ error_reporting(0);
 
 $query = mysqli_query($con,"select * from tblstudent where matricNo='$matricNo'");
 $row = mysqli_fetch_array($query);
-$departmentId = $row['departmentId'];
-$facultyId = $row['facultyId'];
-$levelId = $row['levelId'];
-
-
-$que=mysqli_query($con,"select * from tbldepartment where Id = '$departmentId'"); //department                     
-$row = mysqli_fetch_array($que);  
-$departmentName = $row['departmentName'];      
-
-
-$que=mysqli_query($con,"select * from tblfaculty where Id = '$facultyId'"); //faculty                      
-$row = mysqli_fetch_array($que);  
-$facultyName = $row['facultyName'];      
-
+$yearId = $row['yearId'];
 
 
 //Log on to codeastro.com for more projects!
 ////////////  ADMINISTRATOR DASHBOARD //////////////
 
-$queryStudent=mysqli_query($con,"select * from tblstudent where facultyId = '$facultyId' and departmentId = '$departmentId'"); //assigned staff
-$adminCountStudent = mysqli_num_rows($queryStudent);
-
-$queryCourses=mysqli_query($con,"select * from tblcourse where facultyId = '$facultyId' and departmentId = '$departmentId'"); //today's Attendance
-$adminCountCourses=mysqli_num_rows($queryCourses);
 
 
 
@@ -68,7 +50,7 @@ $countAllSession = mysqli_num_rows($courseSession);
 $resultComputed=mysqli_query($con,"select * from tblfinalresult"); //courses
 $countAllComputed = mysqli_num_rows($resultComputed);
 
-$levelQue=mysqli_query($con,"select * from tbllevel"); //courses
+$levelQue=mysqli_query($con,"select * from tblyear"); //courses
 $countAllLevel = mysqli_num_rows($levelQue);
 
 $semesterQue=mysqli_query($con,"select * from tblsemester"); //courses

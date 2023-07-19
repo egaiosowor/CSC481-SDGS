@@ -4,10 +4,10 @@
 
         $deptId = intval($_GET['deptId']);//gradeId
 
-        $queryss=mysqli_query($con,"select * from tblstudent where departmentId=".$deptId." ORDER BY firstName ASC");                        
+        $queryss=mysqli_query($con,"select * from tblstudent ORDER BY firstName ASC");                        
         $countt = mysqli_num_rows($queryss);
 
-        $crsquery=mysqli_query($con,"select * from tblcourse where departmentId=".$deptId." ORDER BY courseTitle ASC");                        
+        $crsquery=mysqli_query($con,"select * from tblcourse ORDER BY courseTitle ASC");                        
         $counttCrs = mysqli_num_rows($crsquery);
 
 

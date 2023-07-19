@@ -11,8 +11,6 @@
         $alertStyle ="";
         $statusMsg="";
         $staffId=$_POST['staffId'];
-        $departmentId=$_POST['departmentId'];
-        $facultyId=$_POST['facultyId'];
         $dateAssigned = date("Y-m-d");
 
         $queryi=mysqli_query($con,"select * from tblassignedstaff where staffId = '$staffId'");

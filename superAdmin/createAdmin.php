@@ -20,8 +20,6 @@ if(isset($_POST['submit'])){
   $roleId=2;
   $dateCreated = date("Y-m-d");
 
-        $departmentId=$_POST['departmentId'];
-        $facultyId=$_POST['facultyId'];
         $dateAssigned = date("Y-m-d");
 
     $que=mysqli_query($con,"select * from tbladmin where staffId ='$staffId'");

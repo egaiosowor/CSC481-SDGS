@@ -9,10 +9,10 @@ ob_start();
 
 
 
-    if(isset($_GET['matricNo']) && isset($_GET['levelId'])  && isset($_GET['sessionId']) && isset($_GET['semesterId'])){
+    if(isset($_GET['matricNo']) && isset($_GET['yearId'])  && isset($_GET['sessionId']) && isset($_GET['semesterId'])){
 
         $matricNo = $_GET['matricNo'];
-        $levelId = $_GET['levelId'];
+        $yearId = $_GET['yearId'];
         $sessionId = $_GET['sessionId'];
         $semesterId = $_GET['semesterId'];
 
@@ -27,7 +27,7 @@ ob_start();
         $sessionQuery=mysqli_query($con,"select * from tblsession where Id = '$sessionId'");
         $rowSession = mysqli_fetch_array($sessionQuery);
 
-        $levelQuery=mysqli_query($con,"select * from tbllevel where Id = '$levelId'");
+        $levelQuery=mysqli_query($con,"select * from tblyear where Id = '$yearId'");
         $rowLevel = mysqli_fetch_array($levelQuery);
 
         $deptQuery=mysqli_query($con,"select * from tbldepartment where Id = '$departmentId'");
@@ -94,7 +94,7 @@ if (isset($_POST['compute'])){
                             <div class="page-title">
                                 <h4>Student FullName: <b><?php echo  $rowStd['firstName'].' '.$rowStd['lastName'].' '.$rowStd['otherName'];?></b></h4>
                                 <h4>Matric Number: <b><?php echo $rowStd['matricNo'];?>&nbsp;&nbsp;&nbsp;&nbsp; Semester: <b><?php echo $rowSemester['semesterName'];?> Semester</b></h4>
-                                <h4>Level: <b><?php echo $rowLevel['levelName'];?>&nbsp;&nbsp;&nbsp;&nbsp; Session: <b><?php echo $rowSession['sessionName'];?></b></h4>
+                                <h4>Level: <b><?php echo $rowLevel['yearName'];?>&nbsp;&nbsp;&nbsp;&nbsp; Session: <b><?php echo $rowSession['sessionName'];?></b></h4>
                             </div>
                         </div>
                     </div>
@@ -119,15 +119,15 @@ if (isset($_POST['compute'])){
                     <tbody>
             <?php
 
-                $ret=mysqli_query($con,"SELECT tblresult.matricNo,tblresult.levelId,tblresult.courseCode,tblresult.courseUnit,tblresult.score,tblresult.scoreGradePoint,
+                $ret=mysqli_query($con,"SELECT tblresult.matricNo,tblresult.yearId,tblresult.courseCode,tblresult.courseUnit,tblresult.score,tblresult.scoreGradePoint,
                 tblresult.scoreLetterGrade,tblresult.totalScoreGradePoint,tblresult.dateAdded,tblcourse.courseTitle,
-                tbllevel.levelName,tblsemester.semesterName,tblsession.sessionName
+                tblyear.yearName,tblsemester.semesterName,tblsession.sessionName
                 from tblresult
-                INNER JOIN tbllevel ON tbllevel.Id = tblresult.levelId
+                INNER JOIN tblyear ON tblyear.Id = tblresult.yearId
                 INNER JOIN tblcourse ON tblcourse.courseCode = tblresult.courseCode
                 INNER JOIN tblsemester ON tblsemester.Id = tblresult.semesterId
                 INNER JOIN tblsession ON tblsession.Id = tblresult.sessionId
-                where tblresult.levelId ='$levelId' and tblresult.sessionId ='$sessionId'
+                where tblresult.yearId ='$yearId' and tblresult.sessionId ='$sessionId'
                 and tblresult.semesterId ='$semesterId' and tblresult.matricNo ='$matricNo'");
                 $cnt=1;  $totalCourseUnit = 0;  $totalScoreGradePoint = 0;
                 while ($row=mysqli_fetch_array($ret)) {
@@ -177,14 +177,14 @@ if (isset($_POST['compute'])){
             <tbody>
         <?php
 
-        $ret=mysqli_query($con,"SELECT tblfinalresult.matricNo,tblfinalresult.levelId,tblfinalresult.totalCourseUnit,tblfinalresult.totalScoreGradePoint,tblfinalresult.gpa,
+        $ret=mysqli_query($con,"SELECT tblfinalresult.matricNo,tblfinalresult.yearId,tblfinalresult.totalCourseUnit,tblfinalresult.totalScoreGradePoint,tblfinalresult.gpa,
         tblfinalresult.classOfDiploma,tblfinalresult.dateAdded,
-        tbllevel.levelName,tblsemester.semesterName,tblsession.sessionName
+        tblyear.yearName,tblsemester.semesterName,tblsession.sessionName
         from tblfinalresult
-        INNER JOIN tbllevel ON tbllevel.Id = tblfinalresult.levelId
+        INNER JOIN tblyear ON tblyear.Id = tblfinalresult.yearId
         INNER JOIN tblsemester ON tblsemester.Id = tblfinalresult.semesterId
         INNER JOIN tblsession ON tblsession.Id = tblfinalresult.sessionId
-        where tblfinalresult.levelId ='$levelId' and tblfinalresult.sessionId ='$sessionId'
+        where tblfinalresult.yearId ='$yearId' and tblfinalresult.sessionId ='$sessionId'
         and tblfinalresult.semesterId ='$semesterId' and tblfinalresult.matricNo ='$matricNo'");
         $cnt=1;
         while ($row=mysqli_fetch_array($ret)) {

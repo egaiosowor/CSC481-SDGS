@@ -97,7 +97,7 @@
                                             <th>Title</th>
                                             <th>Code</th>
                                             <th>Unit</th>
-                                            <th>Level</th>
+                                            <th>Year</th>
                                              <th>Semester</th>
                                             <th>Date Added</th>
                                             <th>Actions</th>
@@ -107,9 +107,9 @@
                                       
                             <?php
                 $ret=mysqli_query($con,"SELECT tblcourse.courseCode,tblcourse.courseTitle,tblcourse.dateAdded,
-                tblcourse.courseUnit,tbllevel.levelName,tblsemester.semesterName
+                tblcourse.courseUnit,tblyear.yearName,tblsemester.semesterName
                 from tblcourse 
-                INNER JOIN tbllevel ON tbllevel.Id = tblcourse.levelId
+                INNER JOIN tblyear ON tblyear.Id = tblcourse.yearId
                 INNER JOIN tblsemester ON tblsemester.Id = tblcourse.semesterId");
 
                 $cnt=1;
@@ -120,7 +120,7 @@
                 <td><?php  echo $row['courseTitle'];?></td>
                 <td><?php  echo $row['courseCode'];?></td>
                 <td><?php  echo $row['courseUnit'];?></td>
-                <td><?php  echo $row['levelName'];?></td>
+                <td><?php  echo $row['yearName'];?></td>
                 <td><?php  echo $row['semesterName'];?></td>
                 <td><?php  echo $row['dateAdded'];?></td>
                 <td><a href="editCourses.php?editCourseId=<?php echo $row['courseCode'];?>" title="Edit Details"><i class="fa fa-edit fa-1x"></i></a>

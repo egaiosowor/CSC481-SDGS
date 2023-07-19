@@ -97,7 +97,7 @@
                                             <th>Title</th>
                                             <th>Code</th>
                                             <th>Unit</th>
-                                            <th>Level</th>
+                                            <th>Year</th>
                                             <th>Faculty</th>
                                             <th>Department</th>
                                              <th>Semester</th>
@@ -107,13 +107,13 @@
                                       
                             <?php
                 $ret=mysqli_query($con,"SELECT tblcourse.courseCode,tblcourse.courseTitle,tblcourse.dateAdded,
-                tblcourse.courseUnit,tbllevel.levelName,tblfaculty.facultyName,tbldepartment.departmentName,tblsemester.semesterName
+                tblcourse.courseUnit,tblyear.yearName,tblfaculty.facultyName,tbldepartment.departmentName,tblsemester.semesterName
                 from tblcourse 
-                INNER JOIN tbllevel ON tbllevel.Id = tblcourse.levelId
+                INNER JOIN tblyear ON tblyear.Id = tblcourse.yearId
                 INNER JOIN tblsemester ON tblsemester.Id = tblcourse.semesterId
                 INNER JOIN tblfaculty ON tblfaculty.Id = tblcourse.facultyId
                 INNER JOIN tbldepartment ON tbldepartment.Id = tblcourse.departmentId
-                where tblcourse.departmentId = '$departmentId' and tblcourse.levelId = '$levelId'");
+                where tblcourse.departmentId = '$departmentId' and tblcourse.yearId = '$yearId'");
 
                 $cnt=1;
                 while ($row=mysqli_fetch_array($ret)) {
@@ -123,7 +123,7 @@
                 <td><?php  echo $row['courseTitle'];?></td>
                 <td><?php  echo $row['courseCode'];?></td>
                 <td><?php  echo $row['courseUnit'];?></td>
-                <td><?php  echo $row['levelName'];?></td>
+                <td><?php  echo $row['yearName'];?></td>
                 <td><?php  echo $row['facultyName'];?></td>
                 <td><?php  echo $row['departmentName'];?></td>
                 <td><span class="badge badge-success"><?php  echo $row['semesterName'];?></span></td>

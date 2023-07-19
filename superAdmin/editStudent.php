@@ -34,10 +34,8 @@ if(isset($_POST['submit'])){
   $sessionId=$_POST['sessionId'];
 
   $matricNo=$_POST['matricNo'];
-  $levelId=$_POST['levelId'];
+  $yearId=$_POST['yearId'];
 
-    $departmentId=$_POST['departmentId'];
-    $facultyId=$_POST['facultyId'];
     $dateCreated = date("Y-m-d");
 
     // $query=mysqli_query($con,"select * from tblstudent where matricno !='$matricNo'");
@@ -51,7 +49,7 @@ if(isset($_POST['submit'])){
     // else{
 
     $ret=mysqli_query($con,"update tblstudent set firstName='$firstname', lastName='$lastname', otherName='$othername', 
-    matricNo='$matricNo', levelId='$levelId', facultyId='$facultyId', departmentId = '$departmentId', sessionId='$sessionId'
+    matricNo='$matricNo', yearId='$yearId', sessionId='$sessionId'
     where matricNo='$_SESSION[editStudentId]'");
 
     if ($ret) {
@@ -150,7 +148,7 @@ function showValues(str) {
                                 <ol class="breadcrumb text-right">
                                     <li><a href="#">Dashboard</a></li>
                                     <li><a href="#">Student</a></li>
-                                    <li class="active">Edir Student</li>
+                                    <li class="active">Edit Student</li>
                                 </ol>
                             </div>
                         </div>
@@ -198,13 +196,13 @@ function showValues(str) {
                                                 <div class="form-group">
                                                     <label for="x_card_code" class="control-label mb-1">Level</label>
                                                     <?php 
-                                                $query=mysqli_query($con,"select * from tbllevel");                        
+                                                $query=mysqli_query($con,"select * from tblyear");                        
                                                 $count = mysqli_num_rows($query);
                                                 if($count > 0){                       
-                                                    echo ' <select required name="levelId" class="custom-select form-control">';
+                                                    echo ' <select required name="yearId" class="custom-select form-control">';
                                                     echo'<option value="">--Select Level--</option>';
                                                     while ($row = mysqli_fetch_array($query)) {
-                                                    echo'<option value="'.$row['Id'].'" >'.$row['levelName'].'</option>';
+                                                    echo'<option value="'.$row['Id'].'" >'.$row['yearName'].'</option>';
                                                         }
                                                             echo '</select>';
                                                         }
@@ -238,31 +236,7 @@ function showValues(str) {
                                                 </div>
                                             </div>
                                         </div>
-                                         <div class="row">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                    <label for="x_card_code" class="control-label mb-1">Faculty</label>
-                                                    <?php 
-                                                    $query=mysqli_query($con,"select * from tblfaculty ORDER BY facultyName ASC");                        
-                                                    $count = mysqli_num_rows($query);
-                                                    if($count > 0){                       
-                                                        echo ' <select required name="facultyId" onchange="showValues(this.value)" class="custom-select form-control">';
-                                                        echo'<option value="">--Select Faculty--</option>';
-                                                        while ($row = mysqli_fetch_array($query)) {
-                                                        echo'<option value="'.$row['Id'].'" >'.$row['facultyName'].'</option>';
-                                                            }
-                                                                echo '</select>';
-                                                            }
-                                                    ?>                                                     
-                                                 </div>
-                                                </div>
-                                                 <div class="col-6">
-                                                    <div class="form-group">
-                                                   <?php
-                                                        echo"<div id='txtHint'></div>";
-                                                    ?>                                    
-                                                 </div>
-                                                </div>
+                                 
                                              </div>
                                                 <button type="submit" name="submit" class="btn btn-primary">Update Student</button>
                                             </div>
@@ -287,9 +261,7 @@ function showValues(str) {
                                             <th>#</th>
                                             <th>FullName</th>
                                             <th>MatricNo</th>
-                                            <th>Level</th>
-                                            <th>Faculty</th>
-                                            <th>Department</th>
+                                            <th>Year</th>
                                             <th>Session</th>
                                             <th>Date</th>
                                             <th>Actions</th>
@@ -299,12 +271,10 @@ function showValues(str) {
                                       
                             <?php
                     $ret=mysqli_query($con,"SELECT tblstudent.Id, tblstudent.firstName, tblstudent.lastName, tblstudent.otherName,tblstudent.matricNo,
-                    tblstudent.dateCreated, tbllevel.levelName,tblfaculty.facultyName,tbldepartment.departmentName,tblsession.sessionName
+                    tblstudent.dateCreated, tblyear.yearName,tblsession.sessionName
                     from tblstudent
-                    INNER JOIN tbllevel ON tbllevel.Id = tblstudent.levelId
-                    INNER JOIN tblsession ON tblsession.Id = tblstudent.sessionId
-                    INNER JOIN tblfaculty ON tblfaculty.Id = tblstudent.facultyId
-                    INNER JOIN tbldepartment ON tbldepartment.Id = tblstudent.departmentId");
+                    INNER JOIN tblyear ON tblyear.Id = tblstudent.yearId
+                    INNER JOIN tblsession ON tblsession.Id = tblstudent.sessionId");
                     $cnt=1;
                     while ($row=mysqli_fetch_array($ret)) {
                                         ?>
@@ -312,9 +282,7 @@ function showValues(str) {
                     <td><?php echo $cnt;?></td>
                     <td><?php  echo $row['firstName'].' '.$row['lastName'].' '.$row['otherName'];?></td>
                     <td><?php  echo $row['matricNo'];?></td>
-                    <td><?php  echo $row['levelName'];?></td>
-                    <td><?php  echo $row['facultyName'];?></td>
-                    <td><?php  echo $row['departmentName'];?></td>
+                    <td><?php  echo $row['yearName'];?></td>
                      <td><?php  echo $row['sessionName'];?></td>
                     <td><?php  echo $row['dateCreated'];?></td>
                     <td><a href="editStudent.php?editStudentId=<?php echo $row['matricNo'];?>" title="Edit Details"><i class="fa fa-edit fa-1x"></i></a>

@@ -70,7 +70,7 @@ while($rows = mysql_fetch_array($query)){
                                                         <th>Requirement</th>
                                                             <th>Matric No</th>
                                                             <th>Session</th>
-                                                            <th>Level</th>
+                                                            <th>Year</th>
                                                             <th>Status</th>
 
                                                         </tr>

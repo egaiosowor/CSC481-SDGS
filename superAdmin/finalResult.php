@@ -161,7 +161,7 @@ if (isset($_POST['compute'])){
                                             <th>#</th>
                                             <th>FullName</th>
                                             <th>Matric No</th>
-                                            <th>Level</th>
+                                            <th>Year</th>
                                             <th>Semester</th>
                                             <th>Session</th>
                                             <th>Department</th>
@@ -175,11 +175,11 @@ if (isset($_POST['compute'])){
                                     <tbody>
                                       
                             <?php
-                $ret=mysqli_query($con,"SELECT tbllevel.levelName,tblfaculty.facultyName,tbldepartment.departmentName,tblsemester.semesterName,
+                $ret=mysqli_query($con,"SELECT tblyear.yearName,tblfaculty.facultyName,tbldepartment.departmentName,tblsemester.semesterName,
                 tblsession.sessionName,tblstudent.firstName,tblstudent.lastName,tblstudent.matricNo, tblfinalresult.totalCourseUnit,tblfinalresult.totalScoreGradePoint,
                 tblfinalresult.gpa,tblfinalresult.classOfDiploma,tblfinalresult.dateAdded,tblfinalresult.Id
                 from tblfinalresult 
-                INNER JOIN tbllevel ON tbllevel.Id = tblfinalresult.levelId
+                INNER JOIN tblyear ON tblyear.Id = tblfinalresult.yearId
                 INNER JOIN tblsemester ON tblsemester.Id = tblfinalresult.semesterId
                 INNER JOIN tblsession ON tblsession.Id = tblfinalresult.sessionId
                 INNER JOIN tblstudent ON tblstudent.matricNo = tblfinalresult.matricNo
@@ -194,7 +194,7 @@ if (isset($_POST['compute'])){
                 <td><?php echo $cnt;?></td>
                 <td><?php  echo $row['firstName'].' '.$row['lastName'];?></td>
                 <td><?php  echo $row['matricNo'];?></td>
-                <td><?php  echo $row['levelName'];?></td>
+                <td><?php  echo $row['yearName'];?></td>
                 <td><?php  echo $row['semesterName'];?></td>
                 <td><?php  echo $row['sessionName'];?></td> 
                 <td><?php  echo $row['departmentName'];?></td>

@@ -146,7 +146,7 @@ function showValues(str) {
                                             <th>#</th>
                                             <th>FullName</th>
                                             <th>MatricNo</th>
-                                            <th>Level</th>
+                                            <th>Year</th>
                                             <th>Faculty</th>
                                             <th>Department</th>
                                             <th>Date Added</th>
@@ -157,9 +157,9 @@ function showValues(str) {
                                       
                             <?php
                     $ret=mysqli_query($con,"SELECT tblstudent.Id, tblstudent.firstName, tblstudent.lastName, tblstudent.otherName,tblstudent.matricNo,
-                    tblstudent.dateCreated, tbllevel.levelName,tblfaculty.facultyName,tbldepartment.departmentName
+                    tblstudent.dateCreated, tblyear.yearName,tblfaculty.facultyName,tbldepartment.departmentName
                     from tblstudent
-                    INNER JOIN tbllevel ON tbllevel.Id = tblstudent.levelId
+                    INNER JOIN tblyear ON tblyear.Id = tblstudent.yearId
                     INNER JOIN tblfaculty ON tblfaculty.Id = tblstudent.facultyId
                     INNER JOIN tbldepartment ON tbldepartment.Id = tblstudent.departmentId
                     where tbldepartment.Id='$departmentId'");
@@ -170,7 +170,7 @@ function showValues(str) {
                     <td><?php echo $cnt;?></td>
                     <td><?php  echo $row['firstName'].' '.$row['lastName'].' '.$row['otherName'];?></td>
                     <td><?php  echo $row['matricNo'];?></td>
-                    <td><?php  echo $row['levelName'];?></td>
+                    <td><?php  echo $row['yearName'];?></td>
                     <td><?php  echo $row['facultyName'];?></td>
                     <td><?php  echo $row['departmentName'];?></td>
                     <td><?php  echo $row['dateCreated'];?></td>

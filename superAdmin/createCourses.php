@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
 
     $courseTitle=$_POST['courseTitle'];
     $courseCode=$_POST['courseCode'];
-    $levelId=$_POST['levelId'];
+    $yearId=$_POST['yearId'];
     $semesterId=$_POST['semesterId'];
     $courseUnit=$_POST['courseUnit'];
     $dateAdded = date("Y-m-d");
@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
     }
     else{
 
-        $query=mysqli_query($con,"insert into tblcourse(courseTitle,courseCode,courseUnit,levelId,semesterId,dateAdded) value('$courseTitle','$courseCode','$courseUnit','$levelId','$semesterId','$dateAdded')");
+        $query=mysqli_query($con,"insert into tblcourse(courseTitle,courseCode,courseUnit,yearId,semesterId,dateAdded) value('$courseTitle','$courseCode','$courseUnit','$yearId','$semesterId','$dateAdded')");
 
     if ($query) {
         
@@ -212,13 +212,13 @@ function showLecturer(str) {
                                                     <div class="form-group">
                                                      <label for="x_card_code" class="control-label mb-1">Level</label>
                                                     <?php 
-                                                    $query=mysqli_query($con,"select * from tbllevel");                        
+                                                    $query=mysqli_query($con,"select * from tblyear");                        
                                                     $count = mysqli_num_rows($query);
                                                     if($count > 0){                       
-                                                        echo ' <select required name="levelId" class="custom-select form-control">';
+                                                        echo ' <select required name="yearId" class="custom-select form-control">';
                                                         echo'<option value="">--Select Level--</option>';
                                                         while ($row = mysqli_fetch_array($query)) {
-                                                        echo'<option value="'.$row['Id'].'" >'.$row['levelName'].'</option>';
+                                                        echo'<option value="'.$row['Id'].'" >'.$row['yearName'].'</option>';
                                                             }
                                                                 echo '</select>';
                                                             }
@@ -281,7 +281,7 @@ function showLecturer(str) {
                                             <th>Title</th>
                                             <th>Code</th>
                                             <th>Unit</th>
-                                            <th>Level</th>
+                                            <th>Year</th>
                                              <th>Semester</th>
                                             <th>Date</th>
                                             <th>Actions</th>
@@ -291,9 +291,9 @@ function showLecturer(str) {
                                       
                             <?php
         $ret=mysqli_query($con,"SELECT tblcourse.courseCode,tblcourse.courseTitle,tblcourse.dateAdded,
-       tblcourse.courseUnit,tbllevel.levelName,tblsemester.semesterName
+       tblcourse.courseUnit,tblyear.yearName,tblsemester.semesterName
         from tblcourse 
-        INNER JOIN tbllevel ON tbllevel.Id = tblcourse.levelId
+        INNER JOIN tblyear ON tblyear.Id = tblcourse.yearId
         INNER JOIN tblsemester ON tblsemester.Id = tblcourse.semesterId");
 
         $cnt=1;
@@ -304,7 +304,7 @@ function showLecturer(str) {
                 <td><?php  echo $row['courseTitle'];?></td>
                 <td><?php  echo $row['courseCode'];?></td>
                 <td><?php  echo $row['courseUnit'];?></td>
-                <td><?php  echo $row['levelName'];?></td>
+                <td><?php  echo $row['yearName'];?></td>
                 <td><?php  echo $row['semesterName'];?></td>
                 <td><?php  echo $row['dateAdded'];?></td>
                 <td><a href="editCourses.php?editCourseId=<?php echo $row['courseCode'];?>" title="Edit Details"><i class="fa fa-edit fa-1x"></i></a>

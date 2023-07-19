@@ -117,13 +117,13 @@ function showValues(str) {
                                                     <div class="form-group">
                                                       <label for="x_card_code" class="control-label mb-1">Level</label>
                                                     <?php 
-                                                $query=mysqli_query($con,"select * from tbllevel");                        
+                                                $query=mysqli_query($con,"select * from tblyear");                        
                                                 $count = mysqli_num_rows($query);
                                                 if($count > 0){                       
-                                                    echo ' <select required name="levelId" class="custom-select form-control">';
+                                                    echo ' <select required name="yearId" class="custom-select form-control">';
                                                     echo'<option value="">--Select Level--</option>';
                                                     while ($row = mysqli_fetch_array($query)) {
-                                                    echo'<option value="'.$row['Id'].'" >'.$row['levelName'].'</option>';
+                                                    echo'<option value="'.$row['Id'].'" >'.$row['yearName'].'</option>';
                                                         }
                                                             echo '</select>';
                                                         }
@@ -180,7 +180,7 @@ function showValues(str) {
                <?php
  if(isset($_POST['submit'])){
 
-                $levelId = $_POST['levelId'];
+                $yearId = $_POST['yearId'];
                 $sessionId = $_POST['sessionId'];
                 $semesterId = $_POST['semesterId'];
 
@@ -190,7 +190,7 @@ function showValues(str) {
                 $sessionQuery=mysqli_query($con,"select * from tblsession where Id = '$sessionId'");
                 $rowSession = mysqli_fetch_array($sessionQuery);
 
-                $levelQuery=mysqli_query($con,"select * from tbllevel where Id = '$levelId'");
+                $levelQuery=mysqli_query($con,"select * from tblyear where Id = '$yearId'");
                 $rowLevel = mysqli_fetch_array($levelQuery);
  }
 
@@ -201,7 +201,7 @@ function showValues(str) {
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title"><h3 align="center"><?php echo $rowLevel['levelName'];?>&nbsp;<?php echo $rowSemester['semesterName'];?> Semester Result &nbsp;<?php echo $rowSession['sessionName'];?> Session</h3></strong>
+                                <strong class="card-title"><h3 align="center"><?php echo $rowLevel['yearName'];?>&nbsp;<?php echo $rowSemester['semesterName'];?> Semester Result &nbsp;<?php echo $rowSession['sessionName'];?> Session</h3></strong>
                             </div>
                             <div class="card-body">
                                <table class="table table-hover table-striped table-bordered">
@@ -222,19 +222,19 @@ function showValues(str) {
 
             if(isset($_POST['submit'])){
 
-                $levelId = $_POST['levelId'];
+                $yearId = $_POST['yearId'];
                 $sessionId = $_POST['sessionId'];
                 $semesterId = $_POST['semesterId'];
 
-                $ret=mysqli_query($con,"SELECT tblresult.matricNo,tblresult.levelId,tblresult.courseCode,tblresult.courseUnit,tblresult.score,tblresult.scoreGradePoint,
+                $ret=mysqli_query($con,"SELECT tblresult.matricNo,tblresult.yearId,tblresult.courseCode,tblresult.courseUnit,tblresult.score,tblresult.scoreGradePoint,
                 tblresult.scoreLetterGrade,tblresult.totalScoreGradePoint,tblresult.dateAdded,tblcourse.courseTitle,
-                tbllevel.levelName,tblsemester.semesterName,tblsession.sessionName
+                tblyear.yearName,tblsemester.semesterName,tblsession.sessionName
                 from tblresult
-                INNER JOIN tbllevel ON tbllevel.Id = tblresult.levelId
+                INNER JOIN tblyear ON tblyear.Id = tblresult.yearId
                 INNER JOIN tblcourse ON tblcourse.courseCode = tblresult.courseCode
                 INNER JOIN tblsemester ON tblsemester.Id = tblresult.semesterId
                 INNER JOIN tblsession ON tblsession.Id = tblresult.sessionId
-                where tblresult.levelId ='$levelId' and tblresult.sessionId ='$sessionId' 
+                where tblresult.yearId ='$yearId' and tblresult.sessionId ='$sessionId' 
                 and tblresult.semesterId ='$semesterId' and tblresult.matricNo ='$matricNo'");
                 $cnt=1;  $totalCourseUnit = 0;  $totalScoreGradePoint = 0;
                 while ($row=mysqli_fetch_array($ret)) {
@@ -285,18 +285,18 @@ function showValues(str) {
 
      if (isset($_POST['submit'])){
 
-                $levelId = $_POST['levelId'];
+                $yearId = $_POST['yearId'];
                 $sessionId = $_POST['sessionId'];
                 $semesterId = $_POST['semesterId'];
 
-        $ret=mysqli_query($con,"SELECT tblfinalresult.matricNo,tblfinalresult.levelId,tblfinalresult.totalCourseUnit,tblfinalresult.totalScoreGradePoint,tblfinalresult.gpa,
+        $ret=mysqli_query($con,"SELECT tblfinalresult.matricNo,tblfinalresult.yearId,tblfinalresult.totalCourseUnit,tblfinalresult.totalScoreGradePoint,tblfinalresult.gpa,
         tblfinalresult.classOfDiploma,tblfinalresult.dateAdded,
-        tbllevel.levelName,tblsemester.semesterName,tblsession.sessionName
+        tblyear.yearName,tblsemester.semesterName,tblsession.sessionName
         from tblfinalresult
-        INNER JOIN tbllevel ON tbllevel.Id = tblfinalresult.levelId
+        INNER JOIN tblyear ON tblyear.Id = tblfinalresult.yearId
         INNER JOIN tblsemester ON tblsemester.Id = tblfinalresult.semesterId
         INNER JOIN tblsession ON tblsession.Id = tblfinalresult.sessionId
-        where tblfinalresult.levelId ='$levelId' and tblfinalresult.sessionId ='$sessionId' 
+        where tblfinalresult.yearId ='$yearId' and tblfinalresult.sessionId ='$sessionId' 
         and tblfinalresult.semesterId ='$semesterId' and tblfinalresult.matricNo ='$matricNo'");
         $cnt=1;
         while ($row=mysqli_fetch_array($ret)) {
@@ -314,7 +314,7 @@ function showValues(str) {
                                                                                     
                     </tbody>
                 </table>
-                <a href="studentPrintResult.php?semesterId=<?php echo $semesterId;?>&matricNo=<?php echo $matricNo;?>&levelId=<?php echo $levelId;?>&sessionId=<?php echo $sessionId;?>" class="btn btn-danger">Print Result</a>
+                <a href="studentPrintResult.php?semesterId=<?php echo $semesterId;?>&matricNo=<?php echo $matricNo;?>&yearId=<?php echo $yearId;?>&sessionId=<?php echo $sessionId;?>" class="btn btn-danger">Print Result</a>
             </div>
         </div>
     </div>

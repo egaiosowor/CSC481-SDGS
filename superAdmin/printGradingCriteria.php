@@ -9,10 +9,10 @@ ob_start();
 
 
 
-    if(isset($_GET['matricNo']) && isset($_GET['levelId'])  && isset($_GET['sessionId']) && isset($_GET['semesterId'])){
+    if(isset($_GET['matricNo']) && isset($_GET['yearId'])  && isset($_GET['sessionId']) && isset($_GET['semesterId'])){
 
         $matricNo = $_GET['matricNo'];
-        $levelId = $_GET['levelId'];
+        $yearId = $_GET['yearId'];
         $sessionId = $_GET['sessionId'];
         $semesterId = $_GET['semesterId'];
 
@@ -27,7 +27,7 @@ ob_start();
         $sessionQuery=mysqli_query($con,"select * from tblsession where Id = '$sessionId'");
         $rowSession = mysqli_fetch_array($sessionQuery);
 
-        $levelQuery=mysqli_query($con,"select * from tbllevel where Id = '$levelId'");
+        $levelQuery=mysqli_query($con,"select * from tblyear where Id = '$yearId'");
         $rowLevel = mysqli_fetch_array($levelQuery);
 
         $deptQuery=mysqli_query($con,"select * from tbldepartment where Id = '$departmentId'");
