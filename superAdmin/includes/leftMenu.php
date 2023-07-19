@@ -31,24 +31,6 @@ $staffFullName = $row['firstName'].' '.$row['lastName'];
                     </ul>
                 </li>
                    
-                   <li class="menu-title">Faculty and Dept.</li>
-                    <li class="menu-item-has-children dropdown <?php if($page=='faculty'){ echo 'active'; }?>">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Faculty</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-plus"></i> <a href="createFaculty.php">Add New Faculty</a></li>
-                            <li><i class="fa fa-eye"></i> <a href="viewFaculty.php">View Faculty</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li class="menu-item-has-children dropdown <?php if($page=='department'){ echo 'active'; }?>">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Departments</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-plus"></i> <a href="createDepartment.php">Add New Dept.</a></li>
-                            <li><i class="fa fa-eye"></i> <a href="viewDepartment.php">View Department</a></li>
-                        </ul>
-                    </li>
 
                     <li class="menu-title">Student Section</li>
                     <li class="menu-item-has-children dropdown <?php if($page=='student'){ echo 'active'; }?>">

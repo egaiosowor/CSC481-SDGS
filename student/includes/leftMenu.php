@@ -4,8 +4,6 @@
     $query = mysqli_query($con,"SELECT * FROM tblstudent WHERE matricNo='$matricNo'");
     $row = mysqli_fetch_array($query);
     $fullName = $row['firstName'].' '.$row['lastName'];
-    $departmentId = $row['departmentId'];
-    $facultyId = $row['facultyId'];
     $levelId = $row['levelId'];
 
 ?>

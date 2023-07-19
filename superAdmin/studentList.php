@@ -150,32 +150,7 @@ function showValues(str) {
                                                 </div>
                                             </div>
                                         </div>
-                                         <div class="row">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                    <label for="x_card_code" class="control-label mb-1">Faculty</label>
-                                                    <?php 
-                                                    $query=mysqli_query($con,"select * from tblfaculty ORDER BY facultyName ASC");                        
-                                                    $count = mysqli_num_rows($query);
-                                                    if($count > 0){                       
-                                                        echo ' <select required name="facultyId" onchange="showValues(this.value)" class="custom-select form-control">';
-                                                        echo'<option value="">--Select Faculty--</option>';
-                                                        while ($row = mysqli_fetch_array($query)) {
-                                                        echo'<option value="'.$row['Id'].'" >'.$row['facultyName'].'</option>';
-                                                            }
-                                                                echo '</select>';
-                                                            }
-                                                    ?>                                                     
-                                                 </div>
-                                                </div>
-                                                 <div class="col-6">
-                                                    <div class="form-group">
-                                                   <?php
-                                                        echo"<div id='txtHint'></div>";
-                                                    ?>                                    
-                                                 </div>
-                                                </div>
-                                             </div>
+                                         
                                                 <div>
 												<!-- Log on to codeastro.com for more projects! -->
                                                 <button type="submit" name="submit" class="btn btn-success">View Student</button>
@@ -203,8 +178,6 @@ function showValues(str) {
                                             <th>FullName</th>
                                             <th>MatricNo</th>
                                             <th>Level</th>
-                                            <th>Faculty</th>
-                                            <th>Department</th>
                                             <th>Session</th>
                                             <th>Date Added</th>
                                             <th>First Semester</th>
@@ -223,15 +196,12 @@ function showValues(str) {
                     $facultyId=$_POST['facultyId'];
 
                     $ret=mysqli_query($con,"SELECT tblstudent.Id, tblstudent.firstName, tblstudent.lastName, tblstudent.otherName,tblstudent.matricNo,
-                    tblstudent.dateCreated, tbllevel.levelName,tblfaculty.facultyName,tbldepartment.departmentName,tblsession.sessionName,
-                    tblstudent.levelId,tblstudent.sessionId,tblstudent.facultyId,tblstudent.departmentId
+                    tblstudent.dateCreated, tbllevel.levelName,tblsession.sessionName,
+                    tblstudent.levelId,tblstudent.sessionId,
                     from tblstudent
                     INNER JOIN tbllevel ON tbllevel.Id = tblstudent.levelId
                     INNER JOIN tblsession ON tblsession.Id = tblstudent.sessionId
-                    INNER JOIN tblfaculty ON tblfaculty.Id = tblstudent.facultyId
-                    INNER JOIN tbldepartment ON tbldepartment.Id = tblstudent.departmentId
-                    where tblstudent.levelId ='$levelId' and tblstudent.sessionId ='$sessionId' 
-                    and tblstudent.departmentId ='$departmentId' and tblstudent.facultyId ='$facultyId'");
+                    where tblstudent.levelId ='$levelId' and tblstudent.sessionId ='$sessionId'");
                     $cnt=1;
                     while ($row=mysqli_fetch_array($ret)) {
                                         ?>
@@ -240,12 +210,10 @@ function showValues(str) {
                     <td><?php  echo $row['firstName'].' '.$row['lastName'].' '.$row['otherName'];?></td>
                     <td><?php  echo $row['matricNo'];?></td>
                     <td><?php  echo $row['levelName'];?></td>
-                    <td><?php  echo $row['facultyName'];?></td>
-                    <td><?php  echo $row['departmentName'];?></td>
                      <td><?php  echo $row['sessionName'];?></td>
                     <td><?php  echo $row['dateCreated'];?></td>
-                    <td><a href="courseList.php?semesterId=1&matricNo=<?php echo $row['matricNo'];?>&levelId=<?php echo $row['levelId'];?>&facultyId=<?php echo $row['facultyId'];?>&departmentId=<?php echo $row['departmentId'];?>&sessionId=<?php echo $row['sessionId'];?>" title="Edit Details"><i class="fa fa-eye fa-1x"></i> View Course</a></td>
-                    <td><a href="courseList.php?semesterId=2&matricNo=<?php echo $row['matricNo'];?>&levelId=<?php echo $row['levelId'];?>&facultyId=<?php echo $row['facultyId'];?>&departmentId=<?php echo $row['departmentId'];?>&sessionId=<?php echo $row['sessionId'];?>" title="Edit Details"><i class="fa fa-eye fa-1x"></i> View Course</a></td>
+                    <td><a href="courseList.php?semesterId=1&matricNo=<?php echo $row['matricNo'];?>&levelId=<?php echo $row['levelId'];?>&sessionId=<?php echo $row['sessionId'];?>" title="Edit Details"><i class="fa fa-eye fa-1x"></i> View Course</a></td>
+                    <td><a href="courseList.php?semesterId=2&matricNo=<?php echo $row['matricNo'];?>&levelId=<?php echo $row['levelId'];?>&sessionId=<?php echo $row['sessionId'];?>" title="Edit Details"><i class="fa fa-eye fa-1x"></i> View Course</a></td>
                     </tr>
                     <?php 
                     $cnt=$cnt+1;
