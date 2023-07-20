@@ -32,12 +32,6 @@ $countAllAttendance=mysqli_num_rows($allAtt);
 $staffQuery=mysqli_query($con,"select * from tblstaff"); //staff
 $countAllStaff = mysqli_num_rows($staffQuery);
 
-$departmentQuery=mysqli_query($con,"select * from tbldepartment"); //department
-$countDepartment = mysqli_num_rows($departmentQuery);
-
-$facultyQuery=mysqli_query($con,"select * from tblfaculty"); //faculty
-$countFaculty = mysqli_num_rows($facultyQuery);
-
 $studentQuery=mysqli_query($con,"select * from tblstudent"); //student
 $countAllStudent = mysqli_num_rows($studentQuery);
 
@@ -50,8 +44,8 @@ $countAllSession = mysqli_num_rows($courseSession);
 $resultComputed=mysqli_query($con,"select * from tblfinalresult"); //courses
 $countAllComputed = mysqli_num_rows($resultComputed);
 
-$levelQue=mysqli_query($con,"select * from tblyear"); //courses
-$countAllLevel = mysqli_num_rows($levelQue);
+$yearQue=mysqli_query($con,"select * from tblyear"); //courses
+$countAllYear = mysqli_num_rows($yearQue);
 
 $semesterQue=mysqli_query($con,"select * from tblsemester"); //courses
 $countAllSemester = mysqli_num_rows($semesterQue);
@@ -74,16 +68,16 @@ $countAllf = mysqli_num_rows($failed);
 //Log on to codeastro.com for more projects!
 //-----------------------LECTURER----------------------
 
-$lecCourse=mysqli_query($con,"select * from tblcourse where departmentId = '$departmentId'"); //courses
+$lecCourse=mysqli_query($con,"select * from tblcourse"); //courses
 $countLecCourse = mysqli_num_rows($lecCourse);
 
-$que=mysqli_query($con,"select * from tblassignedstaff where departmentId = '$departmentId'"); //assigned staff
+$que=mysqli_query($con,"select * from tblassignedstaff"); //assigned staff
 $lecCountStaff = mysqli_num_rows($que);
 
 //Log on to codeastro.com for more projects!
 //-----------------------STUDENT----------------------
 
-$studCourse=mysqli_query($con,"select * from tblcourse where departmentId = '$departmentId'"); //courses
+$studCourse=mysqli_query($con,"select * from tblcourse"); //courses
 $coutAllStudentCourses = mysqli_num_rows($studCourse);
 
 $queResult=mysqli_query($con,"select * from tblfinalresult where matricNo = '$matricNo'"); //assigned staff

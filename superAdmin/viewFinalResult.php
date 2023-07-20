@@ -93,8 +93,6 @@ if (isset($_POST['compute'])){
                 <tr>
                     <th>Full Name</th>
                     <th>Matric No.</th>
-                    <th>Faculty</th>
-                    <th>Department</th>
                     <th>CGPA</th>
                     <th>Class of Diploma</th>
                 </tr>
@@ -103,12 +101,9 @@ if (isset($_POST['compute'])){
         <?php
 
         $ret=mysqli_query($con,"SELECT tblstudent.Id, tblstudent.firstName, tblstudent.lastName, tblstudent.otherName,tblstudent.matricNo,
-        tblstudent.dateCreated,tblfaculty.facultyName,tbldepartment.departmentName,tblcgparesult.cgpa,tblcgparesult.classOfDiploma,
-        tblstudent.facultyId,tblstudent.departmentId
+        tblstudent.dateCreated,tblcgparesult.cgpa,tblcgparesult.classOfDiploma,
         from tblcgparesult
         INNER JOIN tblstudent ON tblstudent.matricNo = tblcgparesult.matricNo
-        INNER JOIN tblfaculty ON tblfaculty.Id = tblstudent.facultyId
-        INNER JOIN tbldepartment ON tbldepartment.Id = tblstudent.departmentId
         where tblcgparesult.matricNo ='$matricNo'");
         $cnt=1;
         while ($row=mysqli_fetch_array($ret)) {
@@ -116,8 +111,6 @@ if (isset($_POST['compute'])){
         <tr>
         <td bgcolor="#F9D342"><?php  echo $row['firstName'].' '.$row['lastName'].' '.$row['otherName'];?></td>
         <td bgcolor="#F9D342"><?php  echo $row['matricNo'];?></td>
-        <td bgcolor="#F9D342"><?php  echo $row['facultyName'];?></td>
-        <td bgcolor="#F9D342"><?php  echo $row['departmentName'];?></td>
         <td bgcolor="#F9D342"><?php  echo $row['cgpa'];?></td>
         <td bgcolor="#F9D342"><?php  echo $row['classOfDiploma'];?></td>
         </tr>

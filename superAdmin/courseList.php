@@ -22,8 +22,8 @@
         $sessionQuery=mysqli_query($con,"select * from tblsession where Id = '$sessionId'");                        
         $rowSession = mysqli_fetch_array($sessionQuery);
 
-        $levelQuery=mysqli_query($con,"select * from tblyear where Id = '$yearId'");                        
-        $rowLevel = mysqli_fetch_array($levelQuery);
+        $yearQuery=mysqli_query($con,"select * from tblyear where Id = '$yearId'");                        
+        $rowYear = mysqli_fetch_array($yearQuery);
 
     
     }
@@ -67,7 +67,7 @@ if (isset($_POST['compute'])){
       $scoreGradePoint = $courseUnit[$i] * $gradePoint; //multiply each course unit with their grade point ( 3 * 4 = 12)
      
     
-            //Checks if result has been computed (MatricNo, level, semester and session)
+            //Checks if result has been computed (MatricNo, year, semester and session)
             $que=mysqli_query($con,"select * from tblfinalresult where matricNo ='$matricNo' and yearId = '$yearId' and semesterId = '$semesterId' and sessionId = '$sessionId'");
             $ret=mysqli_fetch_array($que); 
 
@@ -99,14 +99,14 @@ if (isset($_POST['compute'])){
     }//end of loop
 
 
-           //Checks if result has been computed (MatricNo, level, semester and session)
+           //Checks if result has been computed (MatricNo, year, semester and session)
             $que=mysqli_query($con,"select * from tblfinalresult where matricNo ='$matricNo' and yearId = '$yearId' and semesterId = '$semesterId' and sessionId = '$sessionId'");
             $ret=mysqli_fetch_array($que);
 
             if($ret > 0){
 
                 $alertStyle ="alert alert-danger";
-                $statusMsg="The result has been computed for this student for this semester, level and session!";
+                $statusMsg="The result has been computed for this student for this semester, year and session!";
             }
             else{
 
@@ -210,7 +210,7 @@ function myFunction() {
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title"><h4 align="center">Compute <?php echo  $rowStd['firstName'].' '.$rowStd['lastName']?>'s&nbsp;<?php echo $rowLevel['yearName'];?>&nbsp;[<?php echo $rowSemester['semesterName'];?>] - Semester Result</h></strong>
+                                <strong class="card-title"><h4 align="center">Compute <?php echo  $rowStd['firstName'].' '.$rowStd['lastName']?>'s&nbsp;<?php echo $rowYear['yearName'];?>&nbsp;[<?php echo $rowSemester['semesterName'];?>] - Result</h></strong>
                             </div>
                             <form method="post">
                             <div class="card-body">
@@ -230,14 +230,11 @@ function myFunction() {
                                       
                             <?php
                 $ret=mysqli_query($con,"SELECT tblcourse.courseCode,tblcourse.courseTitle,tblcourse.dateAdded,tblcourse.Id,
-                tblcourse.courseUnit,tblyear.yearName,tblfaculty.facultyName,tbldepartment.departmentName,tblsemester.semesterName
+                tblcourse.courseUnit,tblyear.yearName,tblsemester.semesterName
                 from tblcourse 
                 INNER JOIN tblyear ON tblyear.Id = tblcourse.yearId
                 INNER JOIN tblsemester ON tblsemester.Id = tblcourse.semesterId
-                INNER JOIN tblfaculty ON tblfaculty.Id = tblcourse.facultyId
-                INNER JOIN tbldepartment ON tbldepartment.Id = tblcourse.departmentId
-                where tblcourse.yearId ='$yearId' and tblcourse.semesterId ='$semesterId' 
-                and tblcourse.departmentId ='$departmentId' and tblcourse.facultyId ='$facultyId'");
+                where tblcourse.yearId ='$yearId' and tblcourse.semesterId ='$semesterId'");
 
                 $cnt=1;
                 while ($row=mysqli_fetch_array($ret)) {

@@ -26,8 +26,8 @@ ob_start();
         $sessionQuery=mysqli_query($con,"select * from tblsession where Id = '$sessionId'");
         $rowSession = mysqli_fetch_array($sessionQuery);
 
-        $levelQuery=mysqli_query($con,"select * from tblyear where Id = '$yearId'");
-        $rowLevel = mysqli_fetch_array($levelQuery);
+        $yearQuery=mysqli_query($con,"select * from tblyear where Id = '$yearId'");
+        $rowYear = mysqli_fetch_array($yearQuery);
 
     }
     else{

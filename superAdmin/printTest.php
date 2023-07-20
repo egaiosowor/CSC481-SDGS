@@ -49,7 +49,7 @@ while($rows = mysql_fetch_array($query)){
                   {  ?>
                   <div align="left">
 <p><b>Student Name :</b> <?php echo $rows['surname'].' '.$rows['firstname'].' '.$rows['othername'];?></p>
-<p><b>Level:</b> <?php echo $rows['level'];?>
+<p><b>:</b> <?php echo $rows['year'];?>
 <p><b>Session:</b> <?php echo $rows['session'];?>
 <p><b>Matric No:</b> <?php echo $rows['matricno'];?>
 <p><b>Sex:</b> <?php echo $rows['sex'];?>
@@ -59,7 +59,7 @@ while($rows = mysql_fetch_array($query)){
 }
 ?>    
 
-    <h4><b>CLEARANCE FOR  <?php echo  $rows['session'].'  SESSION  '. $rows['level'].' LEVEL';?></b></h4>
+    <h4><b>CLEARANCE FOR  <?php echo  $rows['session'].'  SESSION  '. $rows['year'].' YEAR';?></b></h4>
  <table class="table table-inverse" border="1">
                       
                                                 <table class="table table-hover table-bordered">
@@ -77,7 +77,7 @@ while($rows = mysql_fetch_array($query)){
                                                     </thead>
                                                     <tbody>
                                                     <?php	
-$query = mysql_query("select * from requploads where matricno='$_SESSION[alogin]' and session='$rows[session]' and level = '$rows[level]'")or die(mysql_error());
+$query = mysql_query("select * from requploads where matricno='$_SESSION[alogin]' and session='$rows[session]' and year = '$rows[year]'")or die(mysql_error());
 while($row = mysql_fetch_array($query)){
     $querys = mysql_query("select * from requirements where reqid='$row[reqId]'")or die(mysql_error());
 while($rowss = mysql_fetch_array($querys)){
@@ -87,7 +87,7 @@ while($rowss = mysql_fetch_array($querys)){
                         <td><?php echo $rowss['reqName']?>
                         <td><?php echo $row['matricno']; ?></td>
                         <td><?php echo $row['session']; ?></td>
-                        <td><?php echo $row['level']; ?></td>
+                        <td><?php echo $row['year']; ?></td>
                         <td><?php echo $row['uploadStatus']; ?></td>
 
 

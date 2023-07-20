@@ -2,13 +2,10 @@
 
     include('../includes/dbconnection.php');
 
-    $deptId = intval($_GET['deptId']);//gradeId
-
 
         $queryss=mysqli_query($con,"SELECT tblassignedstaff.dateAssigned,tblassignedstaff.staffId, tblstaff.staffId,tblstaff.firstName, tblstaff.lastName, tblstaff.otherName
         from tblassignedstaff 
-        INNER JOIN tblstaff ON tblstaff.staffId = tblassignedstaff.staffId
-        where departmentId = '$deptId'");
+        INNER JOIN tblstaff ON tblstaff.staffId = tblassignedstaff.staffId");
         $countt = mysqli_num_rows($queryss);
 
 

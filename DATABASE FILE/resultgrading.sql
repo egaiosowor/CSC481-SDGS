@@ -248,7 +248,7 @@ CREATE TABLE `tblyear` (
 --
 
 INSERT INTO `tblyear` (`Id`, `yearName`) VALUES
-(1, 'Level One'),
+(1, 'Year One'),
 (2, 'Level Two');
 
 -- --------------------------------------------------------

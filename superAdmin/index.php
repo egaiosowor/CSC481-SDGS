@@ -197,9 +197,9 @@
                                 <div class="card-left pt-1 float-left">
                                     <h3 class="mb-0 fw-r">
                                         <span class="currency float-left mr-1"></span>
-                                        <span class="count"><?php echo $countAllLevel;?></span>
+                                        <span class="count"><?php echo $countAllYear;?></span>
                                     </h3>
-                                    <p class="text-light mt-1 m-0">Level</p><!-- Log on to codeastro.com for more projects! -->
+                                    <p class="text-light mt-1 m-0"></p><!-- Log on to codeastro.com for more projects! -->
                                 </div><!-- /.card-left -->
 
                                 <div class="card-right float-right text-right">

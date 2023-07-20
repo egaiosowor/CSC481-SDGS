@@ -115,13 +115,13 @@ function showValues(str) {
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                      <label for="x_card_code" class="control-label mb-1">Level</label>
+                                                      <label for="x_card_code" class="control-label mb-1"></label>
                                                     <?php 
                                                 $query=mysqli_query($con,"select * from tblyear");                        
                                                 $count = mysqli_num_rows($query);
                                                 if($count > 0){                       
                                                     echo ' <select required name="yearId" class="custom-select form-control">';
-                                                    echo'<option value="">--Select Level--</option>';
+                                                    echo'<option value="">--Select --</option>';
                                                     while ($row = mysqli_fetch_array($query)) {
                                                     echo'<option value="'.$row['Id'].'" >'.$row['yearName'].'</option>';
                                                         }

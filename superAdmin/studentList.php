@@ -117,13 +117,13 @@ function showValues(str) {
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                      <label for="x_card_code" class="control-label mb-1">Level</label>
+                                                      <label for="x_card_code" class="control-label mb-1">Year</label>
                                                     <?php 
                                                 $query=mysqli_query($con,"select * from tblyear");                        
                                                 $count = mysqli_num_rows($query);
                                                 if($count > 0){                       
                                                     echo ' <select required name="yearId" class="custom-select form-control">';
-                                                    echo'<option value="">--Select Level--</option>';
+                                                    echo'<option value="">--Select Year--</option>';
                                                     while ($row = mysqli_fetch_array($query)) {
                                                     echo'<option value="'.$row['Id'].'" >'.$row['yearName'].'</option>';
                                                         }
@@ -150,7 +150,7 @@ function showValues(str) {
                                                 </div>
                                             </div>
                                         </div>
-                                         
+                                        
                                                 <div>
 												<!-- Log on to codeastro.com for more projects! -->
                                                 <button type="submit" name="submit" class="btn btn-success">View Student</button>
@@ -195,7 +195,7 @@ function showValues(str) {
 
                     $ret=mysqli_query($con,"SELECT tblstudent.Id, tblstudent.firstName, tblstudent.lastName, tblstudent.otherName,tblstudent.matricNo,
                     tblstudent.dateCreated, tblyear.yearName,tblsession.sessionName,
-                    tblstudent.yearId,tblstudent.sessionId,
+                    tblstudent.yearId,tblstudent.sessionId
                     from tblstudent
                     INNER JOIN tblyear ON tblyear.Id = tblstudent.yearId
                     INNER JOIN tblsession ON tblsession.Id = tblstudent.sessionId

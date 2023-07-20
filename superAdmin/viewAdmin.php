@@ -100,8 +100,6 @@
                                             <th>Othername</th>
                                             <th>EmailAddress</th>
                                             <th>PhoneNo</th>
-                                            <th>Faculty</th>
-                                            <th>Department</th>
                                             <th>Date Added</th>
                                             <th>Delete</th>
                                         </tr>
@@ -110,11 +108,9 @@
                                       
                             <?php
         $ret=mysqli_query($con,"SELECT tblassignedadmin.dateAssigned,tblassignedadmin.staffId, tbladmin.staffId,tbladmin.firstName, tbladmin.lastName, tbladmin.otherName,
-        tblfaculty.facultyName,tbldepartment.departmentName, tbladmin.staffId, tbladmin.firstName, tbladmin.lastName, tbladmin.otherName,tbladmin.emailAddress, tbladmin.phoneNo, tbladmin.dateCreated
+        tbladmin.staffId, tbladmin.firstName, tbladmin.lastName, tbladmin.otherName,tbladmin.emailAddress, tbladmin.phoneNo, tbladmin.dateCreated
         from tblassignedadmin 
-        INNER JOIN tbladmin ON tbladmin.staffId = tblassignedadmin.staffId
-        INNER JOIN tblfaculty ON tblfaculty.Id = tblassignedadmin.facultyId
-        INNER JOIN tbldepartment ON tbldepartment.Id = tblassignedadmin.departmentId");
+        INNER JOIN tbladmin ON tbladmin.staffId = tblassignedadmin.staffId");
         $cnt=1;
         while ($row=mysqli_fetch_array($ret)) {
                             ?>
@@ -126,8 +122,6 @@
                 <td><?php  echo $row['otherName'];?></td>
                 <td><?php  echo $row['emailAddress'];?></td>
                 <td><?php  echo $row['phoneNo'];?></td>
-                <td><?php  echo $row['facultyName'];?></td>
-                <td><?php  echo $row['departmentName'];?></td>
                 <td><?php  echo $row['dateCreated'];?></td>
                 <!-- <td><a href="editAdmin.php?editid=<?php echo $row['staffId'];?>" title="View Admin"><i class="fa fa-edit fa-1x"></i></a></td> -->
                 <td><a onclick="return confirm('Are you sure you want to delete?')" href="deleteAdmin.php?delid=<?php echo $row['staffId'];?>" title="Delete Admin"><i class="fa fa-trash fa-1x"></i></a></td>

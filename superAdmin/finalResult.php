@@ -164,7 +164,6 @@ if (isset($_POST['compute'])){
                                             <th>Year</th>
                                             <th>Semester</th>
                                             <th>Session</th>
-                                            <th>Department</th>
                                             <th>Total Course Unit</th>
                                             <th>Total Score Grade Point</th>
                                             <th>GPA</th>
@@ -175,7 +174,7 @@ if (isset($_POST['compute'])){
                                     <tbody>
                                       
                             <?php
-                $ret=mysqli_query($con,"SELECT tblyear.yearName,tblfaculty.facultyName,tbldepartment.departmentName,tblsemester.semesterName,
+                $ret=mysqli_query($con,"SELECT tblyear.yearName,tblsemester.semesterName,
                 tblsession.sessionName,tblstudent.firstName,tblstudent.lastName,tblstudent.matricNo, tblfinalresult.totalCourseUnit,tblfinalresult.totalScoreGradePoint,
                 tblfinalresult.gpa,tblfinalresult.classOfDiploma,tblfinalresult.dateAdded,tblfinalresult.Id
                 from tblfinalresult 
@@ -183,8 +182,6 @@ if (isset($_POST['compute'])){
                 INNER JOIN tblsemester ON tblsemester.Id = tblfinalresult.semesterId
                 INNER JOIN tblsession ON tblsession.Id = tblfinalresult.sessionId
                 INNER JOIN tblstudent ON tblstudent.matricNo = tblfinalresult.matricNo
-                INNER JOIN tblfaculty ON tblfaculty.Id = tblstudent.facultyId
-                INNER JOIN tbldepartment ON tbldepartment.Id = tblstudent.departmentId
                 where tblfinalresult.matricNo ='$matricNo'");
 
                 $cnt=1;
@@ -196,8 +193,7 @@ if (isset($_POST['compute'])){
                 <td><?php  echo $row['matricNo'];?></td>
                 <td><?php  echo $row['yearName'];?></td>
                 <td><?php  echo $row['semesterName'];?></td>
-                <td><?php  echo $row['sessionName'];?></td> 
-                <td><?php  echo $row['departmentName'];?></td>
+                <td><?php  echo $row['sessionName'];?></td>
                 <td><?php  echo $row['totalCourseUnit'];?></td>
                 <td><?php  echo $row['totalScoreGradePoint'];?></td>
                 <td><?php  echo $row['gpa'];?></td>

@@ -19,7 +19,6 @@ ob_start();
 
         $stdQuery=mysqli_query($con,"select * from tblstudent where matricNo = '$matricNo'");
         $rowStd = mysqli_fetch_array($stdQuery);
-        $departmentId = $rowStd['departmentId'];
 
         $semesterQuery=mysqli_query($con,"select * from tblsemester where Id = '$semesterId'");
         $rowSemester = mysqli_fetch_array($semesterQuery);
@@ -27,11 +26,8 @@ ob_start();
         $sessionQuery=mysqli_query($con,"select * from tblsession where Id = '$sessionId'");
         $rowSession = mysqli_fetch_array($sessionQuery);
 
-        $levelQuery=mysqli_query($con,"select * from tblyear where Id = '$yearId'");
-        $rowLevel = mysqli_fetch_array($levelQuery);
-
-        $deptQuery=mysqli_query($con,"select * from tbldepartment where Id = '$departmentId'");
-        $rowDept = mysqli_fetch_array($deptQuery);
+        $yearQuery=mysqli_query($con,"select * from tblyear where Id = '$yearId'");
+        $rowYear = mysqli_fetch_array($yearQuery);
 
     }
     else{

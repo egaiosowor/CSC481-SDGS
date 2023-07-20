@@ -22,8 +22,8 @@
         $sessionQuery=mysqli_query($con,"select * from tblsession where Id = '$sessionId'");                        
         $rowSession = mysqli_fetch_array($sessionQuery);
 
-        $levelQuery=mysqli_query($con,"select * from tblyear where Id = '$yearId'");                        
-        $rowLevel = mysqli_fetch_array($levelQuery);
+        $yearQuery=mysqli_query($con,"select * from tblyear where Id = '$yearId'");                        
+        $rowYear = mysqli_fetch_array($yearQuery);
 
     
     }
@@ -97,7 +97,7 @@ if (isset($_POST['compute'])){
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title"><h4 align="center"><?php echo  $rowStd['firstName'].' '.$rowStd['lastName']?>&nbsp;<?php echo $rowLevel['yearName'];?>&nbsp;<?php echo $rowSemester['semesterName'];?> Semester Result</h></strong>
+                                <strong class="card-title"><h4 align="center"><?php echo  $rowStd['firstName'].' '.$rowStd['lastName']?>&nbsp;<?php echo $rowYear['yearName'];?>&nbsp;<?php echo $rowSemester['semesterName'];?> Semester Result</h></strong>
                             </div>
                             <div class="card-body">
                              <div class="<?php if(isset($alertStyle)){echo $alertStyle;}?>" role="alert"><?php if(isset($statusMsg)){echo $statusMsg;}?></div>

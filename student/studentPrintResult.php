@@ -19,7 +19,6 @@ ob_start();
 
         $stdQuery=mysqli_query($con,"select * from tblstudent where matricNo = '$matricNo'");
         $rowStd = mysqli_fetch_array($stdQuery);
-        $departmentId = $rowStd['departmentId'];
 
         $semesterQuery=mysqli_query($con,"select * from tblsemester where Id = '$semesterId'");
         $rowSemester = mysqli_fetch_array($semesterQuery);
@@ -27,11 +26,9 @@ ob_start();
         $sessionQuery=mysqli_query($con,"select * from tblsession where Id = '$sessionId'");
         $rowSession = mysqli_fetch_array($sessionQuery);
 
-        $levelQuery=mysqli_query($con,"select * from tblyear where Id = '$yearId'");
-        $rowLevel = mysqli_fetch_array($levelQuery);
+        $yearQuery=mysqli_query($con,"select * from tblyear where Id = '$yearId'");
+        $rowYear = mysqli_fetch_array($yearQuery);
 
-        $deptQuery=mysqli_query($con,"select * from tbldepartment where Id = '$departmentId'");
-        $rowDept = mysqli_fetch_array($deptQuery);
 
     }
     else{
@@ -84,7 +81,6 @@ if (isset($_POST['compute'])){
     <!-- Left Panel -->
     <div align="center"> 
     <h3><b>STUDENT GRADING SYSTEM - PHP</b></h3>
-     <h4><b><?php echo $rowDept['departmentName'];?> Department</b></h4>
     </div>
    <div class="breadcrumbs" >
             <div class="breadcrumbs-inner">
@@ -94,7 +90,7 @@ if (isset($_POST['compute'])){
                             <div class="page-title">
                                 <h4>Student FullName: <b><?php echo  $rowStd['firstName'].' '.$rowStd['lastName'].' '.$rowStd['otherName'];?></b></h4>
                                 <h4>Matric Number: <b><?php echo $rowStd['matricNo'];?>&nbsp;&nbsp;&nbsp;&nbsp; Semester: <b><?php echo $rowSemester['semesterName'];?> Semester</b></h4>
-                                <h4>Level: <b><?php echo $rowLevel['yearName'];?>&nbsp;&nbsp;&nbsp;&nbsp; Session: <b><?php echo $rowSession['sessionName'];?></b></h4>
+                                <h4>Year: <b><?php echo $rowYear['yearName'];?>&nbsp;&nbsp;&nbsp;&nbsp; Session: <b><?php echo $rowSession['sessionName'];?></b></h4>
                             </div>
                         </div>
                     </div>
