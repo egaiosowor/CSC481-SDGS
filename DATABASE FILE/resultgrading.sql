@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2022 at 08:17 PM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Generation Time: Jul 20, 2023 at 10:27 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -46,7 +47,7 @@ CREATE TABLE `tbladmin` (
 --
 
 INSERT INTO `tbladmin` (`Id`, `firstName`, `lastName`, `otherName`, `emailAddress`, `phoneNo`, `password`, `staffId`, `adminTypeId`, `isAssigned`, `isPasswordChanged`, `dateCreated`) VALUES
-(1, 'Liam', 'Moore', 'Admin', 'admin@mail.com', '7777777777', 'f2d0ff370380124029c2b807a924156c', 'AD123', 1, 1, 0, ''),
+(1, 'Egai-Osowor', 'E.E.', 'Admin', 'egaiosowor@yahoo.com', '2349013253100', 'f2d0ff370380124029c2b807a924156c', 'AD123', 1, 1, 0, ''),
 (2, 'asd', 'asd', 'asd', 'asd@mail.com', '8885554447', 'f2d0ff370380124029c2b807a924156c', '1121', 1, 1, 0, '2022-06-13'),
 (3, 'Test', 'Admin', 'ta', 'test@mail.com', '4587458888', 'f2d0ff370380124029c2b807a924156c', 'TEST10', 1, 1, 0, '2022-06-13');
 
@@ -134,70 +135,24 @@ CREATE TABLE `tblcourse` (
 -- Dumping data for table `tblcourse`
 --
 
-INSERT INTO `tblcourse` (`Id`, `courseTitle`, `courseCode`, `courseUnit`, `facultyId`, `departmentId`, `yearId`, `semesterId`, `dateAdded`) VALUES
-(1, 'Programming Intro', 'PI01', 5, '1', '1', '1', '1', '2022-06-13'),
-(2, 'Networking', 'NT100', 5, '1', '1', '1', '2', '2022-06-13'),
-(3, 'Law of Contract', 'LC1', 6, '3', '3', '1', '1', '2022-06-15'),
-(4, 'Administrative Law', 'AL2', 6, '3', '3', '1', '2', '2022-06-15'),
-(5, 'Constitutional Law', 'CL12', 6, '3', '3', '1', '1', '2022-06-15'),
-(6, 'Law of Crimes', 'LC8', 5, '3', '3', '1', '2', '2022-06-15'),
-(7, 'Labour and Industrial Law', 'LII8', 6, '3', '3', '1', '2', '2022-06-15'),
-(8, 'Property Law', 'PLi5', 6, '3', '3', '1', '1', '2022-06-15'),
-(9, 'Electrical Machines', 'EM12', 5, '4', '5', '1', '1', '2022-06-16'),
-(10, 'Power Systems', 'PS77', 4, '4', '5', '1', '1', '2022-06-16'),
-(11, 'Control Systems', 'CS69', 5, '4', '5', '1', '1', '2022-06-16'),
-(12, 'Signals and Systems', 'SS88', 5, '4', '5', '1', '1', '2022-06-16'),
-(13, 'Microprocessors', 'MCP8', 3, '4', '5', '1', '1', '2022-06-16'),
-(14, 'Fundamentals of Computing', 'FC25', 5, '4', '5', '1', '2', '2022-06-16'),
-(15, 'Mathematics II', 'MM895', 6, '4', '5', '1', '2', '2022-06-16'),
-(16, 'Physics Laboratory', 'PL08', 3, '4', '5', '1', '2', '2022-06-16'),
-(17, 'Physics II', 'P225', 5, '4', '5', '1', '2', '2022-06-16');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbldepartment`
---
-
-CREATE TABLE `tbldepartment` (
-  `Id` int(20) NOT NULL,
-  `departmentName` varchar(255) NOT NULL,
-  `facultyId` int(20) NOT NULL,
-  `dateCreated` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbldepartment`
---
-
-INSERT INTO `tbldepartment` (`Id`, `departmentName`, `facultyId`, `dateCreated`) VALUES
-(1, 'IT Dept', 1, '2022-06-13'),
-(2, 'Accounting', 2, '2022-06-15'),
-(3, 'Law Science', 3, '2022-06-15'),
-(4, 'Industrial Engineering', 4, '2022-06-15'),
-(5, 'Electrical Engineering', 4, '2022-06-15');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tblfaculty`
---
-
-CREATE TABLE `tblfaculty` (
-  `Id` int(20) NOT NULL,
-  `facultyName` varchar(255) NOT NULL,
-  `dateCreated` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tblfaculty`
---
-
-INSERT INTO `tblfaculty` (`Id`, `facultyName`, `dateCreated`) VALUES
-(1, 'Faculty 1', '2022-06-13'),
-(2, 'Faculty 2', '2022-06-15'),
-(3, 'Faculty 3', '2022-06-15'),
-(4, 'Faculty 4', '2022-06-15');
+INSERT INTO `tblcourse` (`Id`, `courseTitle`, `courseCode`, `courseUnit`, `yearId`, `semesterId`, `dateAdded`) VALUES
+(28, 'INTRODUCTION TO PROBLEM SOLVING', 'CSC101', 3, '1', '2', '2023-07-20'),
+(27, 'GENERAL PHYSICS 1', 'PHY111', 3, '1', '1', '2023-07-20'),
+(26, 'ELEMENTARY MATHEMATICS 1', 'MTH111', 3, '1', '1', '2023-07-20'),
+(25, 'INTOR. TO LIB. SCIENCE & INFO. SCIENCE', 'LIB161', 1, '1', '1', '2023-07-20'),
+(24, 'HISTORY AND PHILOSOPHY OF SCIENCE', 'GSS131', 2, '1', '1', '2023-07-20'),
+(22, 'COMPUTER LAB 1A', 'CSC181', 1, '1', '1', '2023-07-20'),
+(23, 'USE OF ENGLISH 1', 'GSS101', 2, '1', '1', '2023-07-20'),
+(21, 'INTRODUCTION TO COMPUTER SCIENCE', 'CSC101', 3, '1', '1', '2023-07-20'),
+(20, 'GENERAL CHEMISTRY 1', 'CHM101', 3, '1', '1', '2023-07-20'),
+(19, 'GENERAL BIOLOGY I', 'BIO111', 3, '1', '1', '2023-07-20'),
+(29, 'COMPUTER LAB IB', 'CSC182', 1, '1', '2', '2023-07-20'),
+(30, 'USE OF ENGLISH II', 'GSS102', 2, '1', '2', '2023-07-20'),
+(31, 'NIGERIAN PEOPLE AND CULTURE', 'GSS112', 2, '1', '2', '2023-07-20'),
+(32, 'PHILOSOPHY AND LOGIC', 'GSS122', 2, '1', '2', '2023-07-20'),
+(33, 'ELEMENTARY MATHS II', 'MTH152', 3, '1', '2', '2023-07-20'),
+(34, 'GENERAL PHYSICS II', 'PHY152', 3, '1', '2', '2023-07-20'),
+(35, 'PROBABILITY & STATISTICS', 'STA102', 2, '1', '2', '2023-07-20');
 
 -- --------------------------------------------------------
 
@@ -230,26 +185,8 @@ INSERT INTO `tblfinalresult` (`Id`, `matricNo`, `yearId`, `semesterId`, `session
 (5, '14750', '1', '1', '1', '18', '63', '3.5', 'Distinction', '2022-06-15'),
 (6, '14750', '1', '2', '1', '17', '54.25', '3.19', 'Upper Credit', '2022-06-15'),
 (7, 'SGS123', '1', '1', '1', '22', '81', '3.68', 'Distinction', '2022-06-16'),
-(8, 'SGS123', '1', '2', '1', '19', '62.25', '3.28', 'Upper Credit', '2022-06-16');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tblyear`
---
-
-CREATE TABLE `tblyear` (
-  `Id` int(20) NOT NULL,
-  `yearName` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tblyear`
---
-
-INSERT INTO `tblyear` (`Id`, `yearName`) VALUES
-(1, 'Year One'),
-(2, 'Level Two');
+(8, 'SGS123', '1', '2', '1', '19', '62.25', '3.28', 'Upper Credit', '2022-06-16'),
+(9, '18/184145024TR', '4', '1', '2', '0', '0', '', '', '2023-07-20');
 
 -- --------------------------------------------------------
 
@@ -277,8 +214,8 @@ CREATE TABLE `tblresult` (
 --
 
 INSERT INTO `tblresult` (`Id`, `matricNo`, `yearId`, `semesterId`, `sessionId`, `courseCode`, `courseUnit`, `score`, `scoreGradePoint`, `scoreLetterGrade`, `totalScoreGradePoint`, `dateAdded`) VALUES
-(1, 'SGS100', '1', '1', '1', 'PI01', '5', '30', '0', 'F', '0', '2022-06-13'),
-(2, 'SGS100', '1', '2', '1', 'NT100', '5', '55', '2.75', 'BC', '13.75', '2022-06-13'),
+(1, '18/184145024TR', '4', '1', '2', 'CSC101', '3', '70', '5', 'A', '15', '2022-06-13'),
+(2, '18/184145024TR', '4', '2', '2', 'CSC102', '3', '55', '3', 'B', '9', '2022-06-13'),
 (3, '10101', '1', '1', '1', 'PI01', '5', '72', '3.5', 'A', '17.5', '2022-06-15'),
 (4, '10101', '1', '2', '1', 'NT100', '5', '68', '3.25', 'AB', '16.25', '2022-06-15'),
 (5, '14750', '1', '1', '1', 'LC1', '6', '60', '3', 'B', '18', '2022-06-15'),
@@ -313,8 +250,8 @@ CREATE TABLE `tblsemester` (
 --
 
 INSERT INTO `tblsemester` (`Id`, `semesterName`) VALUES
-(1, 'First Sem'),
-(2, 'Second Sem');
+(1, 'First Semester'),
+(2, 'Second Semester');
 
 -- --------------------------------------------------------
 
@@ -333,7 +270,10 @@ CREATE TABLE `tblsession` (
 --
 
 INSERT INTO `tblsession` (`Id`, `sessionName`, `isActive`) VALUES
-(1, '2022/2023', 1);
+(2, '2021/2022', 1),
+(3, '2020/2021', 0),
+(4, '2019/2020', 0),
+(5, '2018/2019', 0);
 
 -- --------------------------------------------------------
 
@@ -379,8 +319,6 @@ CREATE TABLE `tblstudent` (
   `matricNo` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `yearId` int(10) NOT NULL,
-  `facultyId` int(10) NOT NULL,
-  `departmentId` int(10) NOT NULL,
   `sessionId` int(10) NOT NULL,
   `dateCreated` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -389,20 +327,29 @@ CREATE TABLE `tblstudent` (
 -- Dumping data for table `tblstudent`
 --
 
-INSERT INTO `tblstudent` (`Id`, `firstName`, `lastName`, `otherName`, `matricNo`, `password`, `yearId`, `facultyId`, `departmentId`, `sessionId`, `dateCreated`) VALUES
-(17, 'Craig', 'Rodriguez', 'cr', 'SGS100', 'codeastro', 1, 1, 1, 1, '2022-06-13'),
-(18, 'Edith', 'Beck', 'el', '10101', 'codeastro', 1, 1, 1, 1, '2022-06-15'),
-(19, 'Chasity', 'Wilson', 'cw', '14750', 'codeastro', 1, 3, 3, 1, '2022-06-15'),
-(20, 'Noel', 'Jacobs', 'nj', 'SGS123', 'codeastro', 1, 4, 5, 1, '2022-06-16'),
-(21, 'Janet', 'Reyes', 'jjr', 'SGS124', 'codeastro', 1, 4, 5, 1, '2022-06-16'),
-(22, 'Travis', 'Parton', 'ttp', 'SGS125', 'codeastro', 1, 4, 5, 1, '2022-06-16'),
-(23, 'Colin', 'Farell', 'cff', 'SGS126', 'codeastro', 1, 4, 5, 1, '2022-06-16'),
-(24, 'Peter', 'Falcone', 'pfr', 'SGS127', 'codeastro', 1, 4, 5, 1, '2022-06-16'),
-(25, 'Zayn', 'Roberts', 'Zr', 'SGS128', 'codeastro', 1, 4, 5, 1, '2022-06-16'),
-(26, 'Norman', 'Parbon', 'Nr', 'SGS129', 'codeastro', 1, 4, 4, 1, '2022-06-16'),
-(27, 'Timothy', 'Herera', 'Th', 'SGS131', 'codeastro', 1, 2, 2, 1, '2022-06-16'),
-(28, 'Nicholas', 'Ducc', 'Nd', 'SGS132', 'codeastro', 1, 3, 3, 1, '2022-06-16'),
-(29, 'Joan', 'Havens', 'Jh', 'SGS133', 'codeastro', 1, 2, 2, 1, '2022-06-16');
+INSERT INTO `tblstudent` (`Id`, `firstName`, `lastName`, `otherName`, `matricNo`, `password`, `yearId`, `sessionId`, `dateCreated`) VALUES
+(37, 'Egai-Osowor', 'Etta-Ekuri', '', '18/184145024TR', 'codeastro', 4, 2, '2023-07-20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblyear`
+--
+
+CREATE TABLE `tblyear` (
+  `Id` int(20) NOT NULL,
+  `yearName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tblyear`
+--
+
+INSERT INTO `tblyear` (`Id`, `yearName`) VALUES
+(1, 'Year One'),
+(2, 'Year Two'),
+(3, 'Year Three'),
+(4, 'Year Four');
 
 --
 -- Indexes for dumped tables
@@ -439,27 +386,9 @@ ALTER TABLE `tblcourse`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indexes for table `tbldepartment`
---
-ALTER TABLE `tbldepartment`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `tblfaculty`
---
-ALTER TABLE `tblfaculty`
-  ADD PRIMARY KEY (`Id`);
-
---
 -- Indexes for table `tblfinalresult`
 --
 ALTER TABLE `tblfinalresult`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `tblyear`
---
-ALTER TABLE `tblyear`
   ADD PRIMARY KEY (`Id`);
 
 --
@@ -493,6 +422,12 @@ ALTER TABLE `tblstudent`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Indexes for table `tblyear`
+--
+ALTER TABLE `tblyear`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -501,71 +436,74 @@ ALTER TABLE `tblstudent`
 --
 ALTER TABLE `tbladmin`
   MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `tbladmintype`
 --
 ALTER TABLE `tbladmintype`
   MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `tblassignedadmin`
 --
 ALTER TABLE `tblassignedadmin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `tblcgparesult`
 --
 ALTER TABLE `tblcgparesult`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `tblcourse`
 --
 ALTER TABLE `tblcourse`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
---
--- AUTO_INCREMENT for table `tbldepartment`
---
-ALTER TABLE `tbldepartment`
-  MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `tblfaculty`
---
-ALTER TABLE `tblfaculty`
-  MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
 --
 -- AUTO_INCREMENT for table `tblfinalresult`
 --
 ALTER TABLE `tblfinalresult`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `tblyear`
---
-ALTER TABLE `tblyear`
-  MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `tblresult`
 --
 ALTER TABLE `tblresult`
   MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
 --
 -- AUTO_INCREMENT for table `tblsemester`
 --
 ALTER TABLE `tblsemester`
   MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `tblsession`
 --
 ALTER TABLE `tblsession`
-  MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `tblstaff`
 --
 ALTER TABLE `tblstaff`
   MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT for table `tblstudent`
 --
 ALTER TABLE `tblstudent`
-  MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT for table `tblyear`
+--
+ALTER TABLE `tblyear`
+  MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
