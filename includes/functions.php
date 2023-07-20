@@ -5,30 +5,21 @@
 function getScoreLetterGrade($score){
 
     $letterGrade = "";
-     if($score >= 75)
+     if($score >= 70)
      {
-        $letterGrade = "AA";
-     }
-     else if($score >= 70){
         $letterGrade = "A";
      }
-     else if($score >= 65){
-        $letterGrade = "AB";
-     }
      else if($score >= 60){
-         $letterGrade = "B";
+        $letterGrade = "B";
      }
-     else if($score >= 55){
-        $letterGrade = "BC";
-     }
-      else if($score >= 50){
+     else if($score >= 50){
         $letterGrade = "C";
      }
-      else if($score >= 45){
-        $letterGrade = "CD";
+     else if($score >= 45){
+         $letterGrade = "D";
      }
      else if($score >= 40){
-        $letterGrade = "D";
+        $letterGrade = "E";
      }
      else if($score <= 39){
          $letterGrade = "F";
@@ -43,33 +34,24 @@ function getScoreGradePoint($score){
 
     $gradePoint = "";
 
-     if($score >= 75)
+     if($score >= 70)
      {
-        $gradePoint = 4.00;
-     }
-     else if($score >= 70){
-        $gradePoint = 3.50;
-     }
-     else if($score >= 65){
-        $gradePoint = 3.25;
+        $gradePoint = 5;
      }
      else if($score >= 60){
-         $gradePoint = 3.00;
+        $gradePoint = 4;
      }
-     else if($score >= 55){
-        $gradePoint = 2.75;
+     else if($score >= 50){
+        $gradePoint = 3;
      }
-      else if($score >= 50){
-        $gradePoint = 2.50;
-     }
-      else if($score >= 45){
-        $gradePoint = 2.25;
+     else if($score >= 45){
+         $gradePoint = 2;
      }
      else if($score >= 40){
-        $gradePoint = 2.00;
+        $gradePoint = 1;
      }
      else if($score <= 39){
-         $gradePoint = 0.00;
+        $gradePoint = 0;
      }
 
      return $gradePoint;
@@ -81,20 +63,20 @@ function getClassOfDiploma($gpa){
 
     $classOfDiploma = "";
 
-     if($gpa >= 3.50)
+     if($gpa >= 4.50)
      {
-        $classOfDiploma = "Distinction";
+        $classOfDiploma = "First Class";
      }
-     else if($gpa >= 3.00){
-        $classOfDiploma = "Upper Credit";
+     else if($gpa >= 3.50){
+        $classOfDiploma = "2nd Class Upper";
      }
-     else if($gpa >= 2.50){
-       $classOfDiploma = "Lower Credit";
+     else if($gpa >= 2.40){
+       $classOfDiploma = "2nd Class Lower";
      }
-     else if($gpa >= 2.00){
-         $classOfDiploma = "Pass";
+     else if($gpa >= 1.50){
+         $classOfDiploma = "2rd Class Upper";
      }
-     else if($gpa < 2.00){
+     else if($gpa < 1.50){
         $classOfDiploma = "Fail";
      }
 

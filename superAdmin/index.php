@@ -118,7 +118,7 @@
                                         <span class="currency float-left mr-1"></span>
                                         <span class="count"><?php echo $countAllStudent;?></span>
                                     </h3>
-                                    <p class="text-light mt-1 m-0">Student</p><!-- Log on to codeastro.com for more projects! -->
+                                    <p class="text-light mt-1 m-0">Students</p><!-- Log on to codeastro.com for more projects! -->
                                 </div><!-- /.card-left -->
 
                                 <div class="card-right float-right text-right">
@@ -179,7 +179,7 @@
                                         <span class="currency float-left mr-1"></span>
                                         <span class="count"><?php echo $countAllSemester;?></span>
                                     </h3>
-                                    <p class="text-light mt-1 m-0">Semester</p><!-- Log on to codeastro.com for more projects! -->
+                                    <p class="text-light mt-1 m-0">Semesters</p><!-- Log on to codeastro.com for more projects! -->
                                 </div><!-- /.card-left -->
 
                                 <div class="card-right float-right text-right">
@@ -199,7 +199,7 @@
                                         <span class="currency float-left mr-1"></span>
                                         <span class="count"><?php echo $countAllYear;?></span>
                                     </h3>
-                                    <p class="text-light mt-1 m-0"></p><!-- Log on to codeastro.com for more projects! -->
+                                    <p class="text-light mt-1 m-0">Years</p><!-- Log on to codeastro.com for more projects! -->
                                 </div><!-- /.card-left -->
 
                                 <div class="card-right float-right text-right">

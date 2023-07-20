@@ -116,48 +116,34 @@ if (isset($_POST['compute'])){
             </thead>
             <tbody>
                 <tr >
-                <td>75 - 100</td>
-                <td>4.00</td>
-                <td>AA</td>
-                </tr>
-                <tr >
-                <td>70 - 74</td>
-                <td>3.50</td>
+                <td>70 - 100</td>
+                <td>5</td>
                 <td>A</td>
                 </tr>
                 <tr >
-                <td>65 - 69</td>
-                <td>3.25</td>
-                <td>AB</td>
-                </tr>
-                <tr >
-                <td>60 - 64</td>
-                <td>3.00</td>
+                <td>60 - 69</td>
+                <td>4</td>
                 <td>B</td>
                 </tr>
                 <tr >
-                <td>55 - 59</td>
-                <td>2.75</td>
-                <td>BC</td>
-                </tr>
-                <tr >
-                <td>50 - 54</td>
-                <td>2.50</td>
+                <td>50 - 59</td>
+                <td>3</td>
                 <td>C</td>
                 </tr>
                 <tr >
                 <td>45 - 49</td>
-                <td>2.25</td>
-                <td>CD</td>
+                <td>2</td>
+                <td>D</td>
+                </tr>
                 </tr>
                 <tr >
                 <td>40 - 44</td>
-                <td>2.00</td>
-                <td>D</td>
+                <td>2</td>
+                <td>E</td>
                 </tr>
                 <tr >
                 <td>0 - 39</td>
-                <td>0.00</td>
+                <td>0</td>
                 <td>F</td>
                 </tr>
                                                                                     

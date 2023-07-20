@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2023 at 10:27 AM
+-- Generation Time: Jul 20, 2023 at 12:36 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.27
 
@@ -105,16 +105,6 @@ CREATE TABLE `tblcgparesult` (
   `dateAdded` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tblcgparesult`
---
-
-INSERT INTO `tblcgparesult` (`Id`, `matricNo`, `cgpa`, `classOfDiploma`, `dateAdded`) VALUES
-(1, 'SGS100', '1.38', 'Fail', '2022-06-13'),
-(2, '10101', '3.38', 'Upper Credit', '2022-06-15'),
-(3, '14750', '3.35', 'Upper Credit', '2022-06-15'),
-(4, 'SGS123', '3.49', 'Upper Credit', '2022-06-16');
-
 -- --------------------------------------------------------
 
 --
@@ -152,7 +142,54 @@ INSERT INTO `tblcourse` (`Id`, `courseTitle`, `courseCode`, `courseUnit`, `yearI
 (32, 'PHILOSOPHY AND LOGIC', 'GSS122', 2, '1', '2', '2023-07-20'),
 (33, 'ELEMENTARY MATHS II', 'MTH152', 3, '1', '2', '2023-07-20'),
 (34, 'GENERAL PHYSICS II', 'PHY152', 3, '1', '2', '2023-07-20'),
-(35, 'PROBABILITY & STATISTICS', 'STA102', 2, '1', '2', '2023-07-20');
+(35, 'PROBABILITY & STATISTICS', 'STA102', 2, '1', '2', '2023-07-20'),
+(36, 'INDUSTRIAL TRAINING', 'CSC390', 6, '4', '1', '2023-07-20'),
+(37, 'ORGANIZATION OF PROGRAMMING LANG.', 'CSC401', 3, '4', '1', '2023-07-20'),
+(38, 'ARTIFICIAL INTELLIGENCE', 'CSC411', 3, '4', '1', '2023-07-20'),
+(39, 'SOFTWARE ENGINEERING 1', 'CSC421', 2, '4', '1', '2023-07-20'),
+(40, 'DATABASE DESIGN AND MANAEMENT 11', 'CSC431', 3, '4', '1', '2023-07-20'),
+(41, 'COMPUTER MODELLING AND SIMULATION', 'CSC441', 3, '4', '1', '2023-07-20'),
+(42, 'COMPUTER NETWORK AND COMMUNICATION', 'CSC451', 2, '4', '1', '2023-07-20'),
+(43, 'COMPUTER LAB 4A', 'CSC481', 1, '4', '1', '2023-07-20'),
+(44, 'SPECIAL TOPICS IN SOFTWARE ENG.', 'CSC471', 2, '4', '1', '2023-07-20'),
+(45, 'PROJECT', 'CSC400', 6, '4', '2', '2023-07-20'),
+(46, 'HUMAN COMPUTER INTERFACE', 'CSC412', 2, '4', '2', '2023-07-20'),
+(47, 'SOFTWARE ENGINEERING 11', 'CSC422', 2, '4', '2', '2023-07-20'),
+(48, 'COMPUTER GRAPHICS AND VISUALIZATION', 'CSC432', 2, '4', '2', '2023-07-20'),
+(49, 'NET-CENTRIC COMPUTING', 'CSC442', 2, '4', '2', '2023-07-20'),
+(50, 'SPECIAL TOPICS IN COMPUTER SCIENCE', 'CSC492', 3, '4', '2', '2023-07-20'),
+(51, 'COMPUTER PERFORMANCE EVALUATION', 'CSC472', 2, '4', '2', '2023-07-20'),
+(52, 'COMPUTER PROGRAMMING 1', 'CSC201', 3, '2', '1', '2023-07-20'),
+(53, 'OPERATING SYSTEM 1', 'CSC211', 3, '2', '1', '2023-07-20'),
+(54, 'DISCRETE STUCTURE', 'CSC221', 3, '2', '1', '2023-07-20'),
+(55, 'COMPUTER HARDWARE', 'CSC241', 2, '2', '1', '2023-07-20'),
+(56, 'COMPUTER LAB 2A', 'CSC281', 1, '2', '1', '2023-07-20'),
+(57, 'COMPUTER PROGRAMMING 11', 'CSC202', 3, '2', '2', '2023-07-20'),
+(58, 'VECTORS ANALYSIS', 'MTH261', 2, '2', '1', '2023-07-20'),
+(59, 'SURVEY OF PROGRAMMING LANGUAGES', 'CSC222', 2, '2', '2', '2023-07-20'),
+(60, 'FOUNDATION OF SEQUENTIAL PROGRAM', 'CSC232', 2, '2', '2', '2023-07-20'),
+(61, 'FOUNDATION OF DATA STRUCTURES', 'CSC242', 3, '2', '2', '2023-07-20'),
+(62, 'COMPUTER LAB 2B', 'CSC282', 1, '2', '2', '2023-07-20'),
+(63, 'ANTI-CORRUPTION STUDIES II', 'GSS142', 2, '2', '2', '2023-07-20'),
+(64, 'ENTERPRENEURSHIP THEORY', 'GST202', 2, '2', '2', '2023-07-20'),
+(65, 'STATISTICAL INFERENCE 1', 'STA282', 2, '2', '2', '2023-07-20'),
+(66, 'ELECTRICAL CIRCUITS AND ELECTRONICS', 'PHY262', 3, '2', '2', '2023-07-20'),
+(67, 'COMPUTER ARCHITECTURE AND ORG. 11', 'CSC322', 2, '3', '2', '2023-07-20'),
+(68, 'SYSTEMS ANALYSIS AND DESIGN', 'CSC342', 3, '3', '2', '2023-07-20'),
+(69, 'FORMAL METHODS AND SOFTWARE DEV.', 'CSC352', 2, '3', '2', '2023-07-20'),
+(70, 'COMPUTER LAB 3B', 'CSC382', 1, '3', '2', '2023-07-20'),
+(71, 'ENTREPRENEURSHIP STUDIES 11', 'GST302', 2, '3', '2', '2023-07-20'),
+(72, 'THEORY OF COMPUTING', 'CSC372', 2, '3', '2', '2023-07-20'),
+(73, 'OBJECT ORIENTED PROGRAMMING', 'CSC301', 3, '3', '1', '2023-07-20'),
+(74, 'OPERATING SYSTEM 11', 'CSC311', 3, '3', '1', '2023-07-20'),
+(75, 'COMPUTER ARCHITECTURE AND ORG. 1', 'CSC321', 2, '3', '1', '2023-07-20'),
+(76, 'COMPILER CONSTRUCTION 1', 'CSC331', 3, '3', '1', '2023-07-20'),
+(77, 'STRUCTURED PROGRAMMING', 'CSC341', 3, '3', '1', '2023-07-20'),
+(78, 'ALGORITHM AND COMPLEXITY ANALYSIS', 'CSC351', 3, '3', '1', '2023-07-20'),
+(79, 'COMPUTER LAB 3B', 'CSC381', 1, '3', '1', '2023-07-20'),
+(80, 'NUMERICAL ANALYSIS', 'CSC371', 2, '3', '1', '2023-07-20'),
+(81, 'DATABASE DESIGN AND MANAGEMENT 1', 'CSC332', 3, '3', '2', '2023-07-20'),
+(82, 'COMPUTATIONAL SCI. AND NUMERICAL METH', 'CSC312', 3, '3', '2', '2023-07-20');
 
 -- --------------------------------------------------------
 
@@ -178,15 +215,8 @@ CREATE TABLE `tblfinalresult` (
 --
 
 INSERT INTO `tblfinalresult` (`Id`, `matricNo`, `yearId`, `semesterId`, `sessionId`, `totalCourseUnit`, `totalScoreGradePoint`, `gpa`, `classOfDiploma`, `dateAdded`) VALUES
-(1, 'SGS100', '1', '1', '1', '5', '0', '0', 'Fail', '2022-06-13'),
-(2, 'SGS100', '1', '2', '1', '5', '13.75', '2.75', 'Lower Credit', '2022-06-13'),
-(3, '10101', '1', '1', '1', '5', '17.5', '3.5', 'Distinction', '2022-06-15'),
-(4, '10101', '1', '2', '1', '5', '16.25', '3.25', 'Upper Credit', '2022-06-15'),
-(5, '14750', '1', '1', '1', '18', '63', '3.5', 'Distinction', '2022-06-15'),
-(6, '14750', '1', '2', '1', '17', '54.25', '3.19', 'Upper Credit', '2022-06-15'),
-(7, 'SGS123', '1', '1', '1', '22', '81', '3.68', 'Distinction', '2022-06-16'),
-(8, 'SGS123', '1', '2', '1', '19', '62.25', '3.28', 'Upper Credit', '2022-06-16'),
-(9, '18/184145024TR', '4', '1', '2', '0', '0', '', '', '2023-07-20');
+(12, '18/184145024TR', '4', '1', '2', '25', '81', '3.24', '2nd Class Lower', '2023-07-20'),
+(11, '18/184145029TR', '4', '1', '2', '25', '72', '2.88', 'Lower Credit', '2023-07-20');
 
 -- --------------------------------------------------------
 
@@ -214,25 +244,15 @@ CREATE TABLE `tblresult` (
 --
 
 INSERT INTO `tblresult` (`Id`, `matricNo`, `yearId`, `semesterId`, `sessionId`, `courseCode`, `courseUnit`, `score`, `scoreGradePoint`, `scoreLetterGrade`, `totalScoreGradePoint`, `dateAdded`) VALUES
-(1, '18/184145024TR', '4', '1', '2', 'CSC101', '3', '70', '5', 'A', '15', '2022-06-13'),
-(2, '18/184145024TR', '4', '2', '2', 'CSC102', '3', '55', '3', 'B', '9', '2022-06-13'),
-(3, '10101', '1', '1', '1', 'PI01', '5', '72', '3.5', 'A', '17.5', '2022-06-15'),
-(4, '10101', '1', '2', '1', 'NT100', '5', '68', '3.25', 'AB', '16.25', '2022-06-15'),
-(5, '14750', '1', '1', '1', 'LC1', '6', '60', '3', 'B', '18', '2022-06-15'),
-(6, '14750', '1', '1', '1', 'CL12', '6', '79', '4', 'AA', '24', '2022-06-15'),
-(7, '14750', '1', '1', '1', 'PLi5', '6', '72', '3.5', 'A', '21', '2022-06-15'),
-(8, '14750', '1', '2', '1', 'AL2', '6', '68', '3.25', 'AB', '19.5', '2022-06-15'),
-(9, '14750', '1', '2', '1', 'LC8', '5', '57', '2.75', 'BC', '13.75', '2022-06-15'),
-(10, '14750', '1', '2', '1', 'LII8', '6', '73', '3.5', 'A', '21', '2022-06-15'),
-(11, 'SGS123', '1', '1', '1', 'EM12', '5', '63', '3', 'B', '15', '2022-06-16'),
-(12, 'SGS123', '1', '1', '1', 'PS77', '4', '73', '3.5', 'A', '14', '2022-06-16'),
-(13, 'SGS123', '1', '1', '1', 'CS69', '5', '80', '4', 'AA', '20', '2022-06-16'),
-(14, 'SGS123', '1', '1', '1', 'SS88', '5', '82', '4', 'AA', '20', '2022-06-16'),
-(15, 'SGS123', '1', '1', '1', 'MCP8', '3', '79', '4', 'AA', '12', '2022-06-16'),
-(16, 'SGS123', '1', '2', '1', 'FC25', '5', '65', '3.25', 'AB', '16.25', '2022-06-16'),
-(17, 'SGS123', '1', '2', '1', 'MM895', '6', '60', '3', 'B', '18', '2022-06-16'),
-(18, 'SGS123', '1', '2', '1', 'PL08', '3', '72', '3.5', 'A', '10.5', '2022-06-16'),
-(19, 'SGS123', '1', '2', '1', 'P225', '5', '74', '3.5', 'A', '17.5', '2022-06-16');
+(46, '18/184145024TR', '4', '1', '2', 'CSC471', '2', '60', '4', 'B', '8', '2023-07-20'),
+(45, '18/184145024TR', '4', '1', '2', 'CSC481', '1', '60', '4', 'B', '4', '2023-07-20'),
+(44, '18/184145024TR', '4', '1', '2', 'CSC451', '2', '20', '0', 'F', '0', '2023-07-20'),
+(43, '18/184145024TR', '4', '1', '2', 'CSC441', '3', '55', '3', 'C', '9', '2023-07-20'),
+(42, '18/184145024TR', '4', '1', '2', 'CSC431', '3', '29', '0', 'F', '0', '2023-07-20'),
+(41, '18/184145024TR', '4', '1', '2', 'CSC421', '2', '33', '0', 'F', '0', '2023-07-20'),
+(40, '18/184145024TR', '4', '1', '2', 'CSC411', '3', '75', '5', 'A', '15', '2023-07-20'),
+(39, '18/184145024TR', '4', '1', '2', 'CSC401', '3', '75', '5', 'A', '15', '2023-07-20'),
+(38, '18/184145024TR', '4', '1', '2', 'CSC390', '6', '75', '5', 'A', '30', '2023-07-20');
 
 -- --------------------------------------------------------
 
@@ -271,9 +291,9 @@ CREATE TABLE `tblsession` (
 
 INSERT INTO `tblsession` (`Id`, `sessionName`, `isActive`) VALUES
 (2, '2021/2022', 1),
-(3, '2020/2021', 0),
-(4, '2019/2020', 0),
-(5, '2018/2019', 0);
+(3, '2020/2021', 1),
+(4, '2019/2020', 1),
+(5, '2018/2019', 1);
 
 -- --------------------------------------------------------
 
@@ -328,7 +348,9 @@ CREATE TABLE `tblstudent` (
 --
 
 INSERT INTO `tblstudent` (`Id`, `firstName`, `lastName`, `otherName`, `matricNo`, `password`, `yearId`, `sessionId`, `dateCreated`) VALUES
-(37, 'Egai-Osowor', 'Etta-Ekuri', '', '18/184145024TR', 'codeastro', 4, 2, '2023-07-20');
+(38, 'Jamie', 'Doe', '', '20/184145014TR', 'codeastro', 1, 2, '2023-07-20'),
+(40, 'Promise', 'Ibe', 'Onyekachi', '18/184145029TR', 'codeastro', 4, 2, '2023-07-20'),
+(41, 'Egai-Osowor', 'Etta-Ekuri', '', '18/184145024TR', 'codeastro', 4, 2, '2023-07-20');
 
 -- --------------------------------------------------------
 
@@ -459,19 +481,19 @@ ALTER TABLE `tblcgparesult`
 -- AUTO_INCREMENT for table `tblcourse`
 --
 ALTER TABLE `tblcourse`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `tblfinalresult`
 --
 ALTER TABLE `tblfinalresult`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tblresult`
 --
 ALTER TABLE `tblresult`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `tblsemester`
@@ -495,7 +517,7 @@ ALTER TABLE `tblstaff`
 -- AUTO_INCREMENT for table `tblstudent`
 --
 ALTER TABLE `tblstudent`
-  MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `tblyear`
